@@ -1,19 +1,22 @@
+import Component from "../Component";
+import HeadingComponent from "../Heading/Heading";
+import MainHeaderComponent from "../MainHeader/MainHeader";
 import styles from "./App.module.css";
 
-class AppComponent {
+class AppComponent extends Component {
   render(): HTMLElement {
     const container = document.createElement("div");
     container.classList.add(styles.appContainer);
 
-    const mainHeader = document.createElement("header");
-    mainHeader.classList.add(styles.mainHeader);
+    const appTitle = new HeadingComponent({
+      level: 1,
+      text: "Documents",
+      className: styles.appTitle,
+    });
 
-    const appTitle = document.createElement("h1");
-    appTitle.classList.add(styles.appTitle);
-    appTitle.textContent = "Documents";
-    mainHeader.appendChild(appTitle);
+    const mainHeader = new MainHeaderComponent({ children: appTitle.render() });
 
-    container.appendChild(mainHeader);
+    container.appendChild(mainHeader.render());
 
     return container;
   }

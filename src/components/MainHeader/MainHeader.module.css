@@ -1,0 +1,5 @@
+.mainHeader {
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+}

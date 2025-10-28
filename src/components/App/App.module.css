@@ -8,12 +8,6 @@
   }
 }
 
-.mainHeader {
-  min-height: 4rem;
-  display: flex;
-  align-items: center;
-}
-
 .appTitle {
   font-size: var(--heading-1-font-size);
   font-weight: 600;
