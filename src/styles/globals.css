@@ -7,4 +7,10 @@
 body {
   margin: 0;
   font-family: var(--font-family);
+  color: var(--color-text-primary);
+  background-color: var(--color-background-primary);
+}
+
+h1 {
+  margin: 0;
 }
