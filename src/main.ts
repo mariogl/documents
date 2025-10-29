@@ -3,10 +3,11 @@ import FetchDocumentsClient from "./documents/client/FetchDocumentsClient";
 
 import "./styles/index.css";
 
-const rootElement = document.body;
+const apiUrlBase = import.meta.env.VITE_API_URL_BASE;
 
 const app = new AppComponent({
-  documentsClient: new FetchDocumentsClient(),
+  documentsClient: new FetchDocumentsClient(apiUrlBase),
 });
 
+const rootElement = document.body;
 rootElement.prepend(app.getElement());
