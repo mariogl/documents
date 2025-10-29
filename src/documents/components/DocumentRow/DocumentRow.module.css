@@ -1,0 +1,25 @@
+.document {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-background-hover);
+  }
+}
+
+.document__cell {
+  padding: 24px;
+  vertical-align: top;
+}
+
+.document__name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.document__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.6;
+}

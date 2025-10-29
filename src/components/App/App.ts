@@ -1,5 +1,6 @@
 import type { DocumentsClient } from "../../documents/client/types";
 import DocumentsGridComponent from "../../documents/components/DocumentsGrid/DocumentsGrid";
+import DocumentsListComponent from "../../documents/components/DocumentsList/DocumentsList";
 import type { DocumentViewModel } from "../../documents/viewModel/types";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
@@ -41,6 +42,12 @@ class AppComponent extends Component<AppComponentProps> {
     container.appendChild(mainHeader.getElement());
 
     const main = document.createElement("main");
+
+    const documentsList = new DocumentsListComponent({
+      documents: this.documents,
+    });
+
+    main.appendChild(documentsList.getElement());
 
     const documentsGrid = new DocumentsGridComponent({
       documents: this.documents,
