@@ -1,7 +1,28 @@
+import DocumentsList from "../../documents/components/DocumentsList/DocumentsList";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
 import MainHeaderComponent from "../MainHeader/MainHeader";
 import styles from "./App.module.css";
+
+const documents: {
+  id: string;
+  name: string;
+  contributors: string[];
+  attachments: string[];
+}[] = [
+  {
+    id: "1",
+    name: "Project Plan",
+    contributors: ["Alice Smith", "Bob Johnson"],
+    attachments: ["Light Lager", "Light Hybrid Beer", "Pilsner"],
+  },
+  {
+    id: "2",
+    name: "Design Document",
+    contributors: ["Charlie Brown", "Dana White"],
+    attachments: ["Stout", "Porter"],
+  },
+];
 
 class AppComponent extends Component {
   render(): HTMLElement {
@@ -15,8 +36,16 @@ class AppComponent extends Component {
     });
 
     const mainHeader = new MainHeaderComponent({ children: appTitle.render() });
+    const documentsList = new DocumentsList({
+      documents,
+    });
 
-    container.appendChild(mainHeader.render());
+    container.innerHTML = `
+      ${mainHeader.render().outerHTML}
+      <main>
+        ${documentsList.render().outerHTML}
+      </main>
+    `;
 
     return container;
   }
