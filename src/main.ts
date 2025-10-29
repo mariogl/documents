@@ -1,7 +1,7 @@
-import "./styles/index.css";
-
 import AppComponent from "./components/App/App";
 import FakeDocumentsClient from "./documents/client/FakeDocumentsClient";
+
+import "./styles/index.css";
 
 const rootElement = document.body;
 

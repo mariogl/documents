@@ -1,11 +1,12 @@
 import type { DocumentsClient } from "../../documents/client/types";
-import DocumentsGridComponent from "../../documents/components/DocumentsGrid/DocumentsGrid";
-import DocumentsListComponent from "../../documents/components/DocumentsList/DocumentsList";
+import type { LayoutType } from "../../documents/components/DocumentItem/types";
+import DocumentsComponent from "../../documents/components/Documents/Documents";
 import type { DocumentViewModel } from "../../documents/viewModel/types";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
 import MainHeaderComponent from "../MainHeader/MainHeader";
 import type { ComponentProps } from "../types";
+
 import styles from "./App.module.css";
 
 type AppComponentProps = {
@@ -14,6 +15,7 @@ type AppComponentProps = {
 
 class AppComponent extends Component<AppComponentProps> {
   private documents: DocumentViewModel[] = [];
+  private layoutType: LayoutType = "list";
 
   constructor(props: ComponentProps<AppComponentProps>) {
     super(props);
@@ -43,17 +45,12 @@ class AppComponent extends Component<AppComponentProps> {
 
     const main = document.createElement("main");
 
-    const documentsList = new DocumentsListComponent({
+    const documentsList = new DocumentsComponent({
       documents: this.documents,
+      layoutType: this.layoutType,
     });
 
     main.appendChild(documentsList.getElement());
-
-    const documentsGrid = new DocumentsGridComponent({
-      documents: this.documents,
-    });
-
-    main.appendChild(documentsGrid.getElement());
 
     container.appendChild(main);
 

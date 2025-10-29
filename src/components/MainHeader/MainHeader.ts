@@ -1,4 +1,5 @@
 import Component from "../Component";
+
 import styles from "./MainHeader.module.css";
 
 class MainHeaderComponent extends Component {
