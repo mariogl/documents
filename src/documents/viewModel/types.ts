@@ -3,4 +3,5 @@ export type DocumentViewModel = {
   name: string;
   contributors: string[];
   attachments: string[];
+  version: string;
 };

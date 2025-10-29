@@ -1,8 +1,8 @@
 import type { DocumentDto } from "../dto/types";
 import type { DocumentViewModel } from "../viewModel/types";
-import type { DocumentsClient } from "./types";
+import BaseDocumentsClient from "./BaseDocumentsClient";
 
-class FakeDocumentsClient implements DocumentsClient {
+class FakeDocumentsClient extends BaseDocumentsClient {
   async getDocuments(): Promise<DocumentViewModel[]> {
     const documentsDto: DocumentDto[] = [
       {
@@ -23,6 +23,7 @@ class FakeDocumentsClient implements DocumentsClient {
         ],
         ID: "69517c79-a4b2-4f64-9c83-20e5678e4519",
         Title: "Arrogant Bastard Ale",
+        Version: "5.3.15",
       },
       {
         Attachments: [
@@ -39,6 +40,7 @@ class FakeDocumentsClient implements DocumentsClient {
         ],
         ID: "d7e00994-75e6-48f1-b778-e5d31ead7136",
         Title: "Ten FIDY",
+        Version: "5.1.15",
       },
       {
         Attachments: [
@@ -59,23 +61,11 @@ class FakeDocumentsClient implements DocumentsClient {
         ],
         ID: "fe6ad6ed-a5bd-480b-8688-fd3652b2a6d9",
         Title: "Orval Trappist Ale",
+        Version: "1.3.1",
       },
     ];
 
     return documentsDto.map(this.mapDocumentDtoToViewModel);
-  }
-
-  private mapDocumentDtoToViewModel(
-    documentDto: DocumentDto,
-  ): DocumentViewModel {
-    return {
-      id: documentDto.ID,
-      name: documentDto.Title,
-      contributors: documentDto.Contributors.map(
-        (contributor) => contributor.Name,
-      ),
-      attachments: documentDto.Attachments,
-    };
   }
 }
 
