@@ -1,8 +1,8 @@
 import type { DocumentViewModel } from "../../../viewModel/types";
 import DocumentItemComponent from "../../DocumentItem/DocumentItem";
 
-import gridLayoutStyles from "./DocumentsGrid.module.css";
-import listLayoutStyles from "./DocumentsList.module.css";
+import gridLayoutStyles from "./DocumentsGridLayout.module.css";
+import listLayoutStyles from "./DocumentsListLayout.module.css";
 
 class DocumentsLayout {
   constructor(private documents: DocumentViewModel[]) {}

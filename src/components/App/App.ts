@@ -1,6 +1,5 @@
 import type { DocumentsClient } from "../../documents/client/types";
-import type { LayoutType } from "../../documents/components/DocumentItem/types";
-import DocumentsComponent from "../../documents/components/Documents/Documents";
+import DocumentsListComponent from "../../documents/components/DocumentsList/DocumentsList";
 import type { DocumentViewModel } from "../../documents/viewModel/types";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
@@ -15,7 +14,6 @@ type AppComponentProps = {
 
 class AppComponent extends Component<AppComponentProps> {
   private documents: DocumentViewModel[] = [];
-  private layoutType: LayoutType = "list";
 
   constructor(props: ComponentProps<AppComponentProps>) {
     super(props);
@@ -45,9 +43,8 @@ class AppComponent extends Component<AppComponentProps> {
 
     const main = document.createElement("main");
 
-    const documentsList = new DocumentsComponent({
+    const documentsList = new DocumentsListComponent({
       documents: this.documents,
-      layoutType: this.layoutType,
     });
 
     main.appendChild(documentsList.getElement());
