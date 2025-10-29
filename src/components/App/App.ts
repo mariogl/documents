@@ -1,15 +1,11 @@
 import DocumentsList from "../../documents/components/DocumentsList/DocumentsList";
+import type { DocumentViewModel } from "../../documents/viewModel/types";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
 import MainHeaderComponent from "../MainHeader/MainHeader";
 import styles from "./App.module.css";
 
-const documents: {
-  id: string;
-  name: string;
-  contributors: string[];
-  attachments: string[];
-}[] = [
+const documents: DocumentViewModel[] = [
   {
     id: "1",
     name: "Project Plan",

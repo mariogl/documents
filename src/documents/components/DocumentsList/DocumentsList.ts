@@ -1,13 +1,9 @@
 import Component from "../../../components/Component";
 import type { ComponentProps } from "../../../components/types";
+import type { DocumentViewModel } from "../../viewModel/types";
 
 type DocumentsProps = {
-  documents: {
-    id: string;
-    name: string;
-    contributors: string[];
-    attachments: string[];
-  }[];
+  documents: DocumentViewModel[];
 };
 
 class DocumentsList extends Component<DocumentsProps> {
