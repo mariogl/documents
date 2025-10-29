@@ -1,0 +1,4 @@
+.layoutModeButtons {
+  display: flex;
+  gap: 8px;
+}
