@@ -11,7 +11,7 @@ class HeadingComponent extends Component<HeadingComponentProps> {
     super(props);
   }
 
-  render(): HTMLElement {
+  render(): void {
     const heading = document.createElement(`h${this.props.level}`);
 
     const baseClassName = "heading";
@@ -22,7 +22,7 @@ class HeadingComponent extends Component<HeadingComponentProps> {
 
     heading.textContent = this.props.text;
 
-    return heading;
+    this.setElement(heading);
   }
 }
 

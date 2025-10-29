@@ -11,7 +11,7 @@ class DocumentsList extends Component<DocumentsProps> {
     super(props);
   }
 
-  render(): HTMLElement {
+  render(): void {
     const container = document.createElement("table");
     const thead = document.createElement("thead");
     const tbody = document.createElement("tbody");
@@ -53,7 +53,7 @@ class DocumentsList extends Component<DocumentsProps> {
 
     container.appendChild(tbody);
 
-    return container;
+    this.setElement(container);
   }
 }
 

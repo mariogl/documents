@@ -19,9 +19,8 @@ const documents: DocumentViewModel[] = [
     attachments: ["Stout", "Porter"],
   },
 ];
-
 class AppComponent extends Component {
-  render(): HTMLElement {
+  protected render(): void {
     const container = document.createElement("div");
     container.classList.add(styles.appContainer);
 
@@ -31,19 +30,21 @@ class AppComponent extends Component {
       className: styles.appTitle,
     });
 
-    const mainHeader = new MainHeaderComponent({ children: appTitle.render() });
+    const mainHeader = new MainHeaderComponent({
+      children: appTitle.getElement(),
+    });
     const documentsList = new DocumentsList({
       documents,
     });
 
-    container.innerHTML = `
-      ${mainHeader.render().outerHTML}
-      <main>
-        ${documentsList.render().outerHTML}
-      </main>
-    `;
+    container.appendChild(mainHeader.getElement());
 
-    return container;
+    const main = document.createElement("main");
+    main.appendChild(documentsList.getElement());
+
+    container.appendChild(main);
+
+    this.setElement(container);
   }
 }
 
