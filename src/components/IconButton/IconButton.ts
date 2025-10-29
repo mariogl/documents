@@ -6,17 +6,36 @@ import styles from "./IconButton.module.css";
 type IconButtonProps = {
   icon: IconComponent;
   text: string;
+  role?: string;
+  isChecked?: boolean;
   onClick: () => void;
 };
 
 class IconButtonComponent extends Component<IconButtonProps> {
   protected render(): Element {
     const button = document.createElement("button");
+    button.appendChild(this.props.icon.getElement());
+
     button.className = styles.iconButton;
 
     button.setAttribute("aria-label", this.props.text);
 
-    button.appendChild(this.props.icon.getElement());
+    if (this.props.role) {
+      button.setAttribute("role", this.props.role);
+    }
+
+    if (typeof this.props.isChecked !== "undefined") {
+      button.setAttribute("aria-checked", this.props.isChecked.toString());
+
+      if (!this.props.isChecked) {
+        button.classList.add(styles["iconButton--unchecked"]);
+      } else {
+        setTimeout(() => {
+          button.focus();
+        });
+      }
+    }
+
     button.addEventListener("click", this.props.onClick);
 
     return button;

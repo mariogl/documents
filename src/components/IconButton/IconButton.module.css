@@ -3,3 +3,9 @@
     display: block;
   }
 }
+
+.iconButton--unchecked {
+  svg {
+    opacity: 0.3;
+  }
+}

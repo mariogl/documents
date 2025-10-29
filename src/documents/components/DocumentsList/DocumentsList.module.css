@@ -1,0 +1,16 @@
+.documentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.documentsList__header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.documentsList__layoutModeButtons {
+  display: flex;
+  gap: 8px;
+}
