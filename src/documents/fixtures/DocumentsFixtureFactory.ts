@@ -1,3 +1,4 @@
+import type { DocumentDto } from "../dto/types";
 import type { DocumentViewModel } from "../viewModel/types";
 
 class DocumentsFixtureFactory {
@@ -10,6 +11,22 @@ class DocumentsFixtureFactory {
       contributors: ["Alice Smith", "Bob Johnson"],
       attachments: ["file1", "file2", "file3"],
       version: "1.0.0",
+      ...overrides,
+    };
+  }
+
+  static createDocumentDtoFixture(
+    overrides: Partial<DocumentDto> = {},
+  ): DocumentDto {
+    return {
+      ID: crypto.randomUUID(),
+      Title: "Document",
+      Contributors: [
+        { ID: crypto.randomUUID(), Name: "John Doe" },
+        { ID: crypto.randomUUID(), Name: "Jane Doe" },
+      ],
+      Attachments: ["file1", "file2"],
+      Version: "2.15.4",
       ...overrides,
     };
   }
