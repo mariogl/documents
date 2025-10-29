@@ -5,5 +5,10 @@
   --heading-1-font-size: 2rem;
 
   --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
   --color-background-primary: #f8f9fa;
+  --color-background-secondary: #fff;
+  --color-background-hover: #f3f4f6;
+  --color-border: #e5e7eb;
+  --color-border-light: #f3f4f6;
 }
