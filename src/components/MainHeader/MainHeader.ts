@@ -2,7 +2,7 @@ import Component from "../Component";
 import styles from "./MainHeader.module.css";
 
 class MainHeaderComponent extends Component {
-  protected render(): void {
+  protected render(): HTMLElement {
     const header = document.createElement("header");
 
     const baseClassName = styles.mainHeader;
@@ -12,8 +12,7 @@ class MainHeaderComponent extends Component {
       : baseClassName;
 
     if (!this.props.children) {
-      this.setElement(header);
-      return;
+      return header;
     }
 
     if (Array.isArray(this.props.children)) {
@@ -22,7 +21,7 @@ class MainHeaderComponent extends Component {
       header.append(this.props.children);
     }
 
-    this.setElement(header);
+    return header;
   }
 }
 

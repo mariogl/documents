@@ -7,7 +7,16 @@ abstract class Component<
 
   constructor(protected props: ComponentProps<Props>) {}
 
-  protected abstract render(): void;
+  protected abstract render(): HTMLElement;
+
+  getElement(): HTMLElement {
+    if (!this.element) {
+      const element = this.render();
+      this.setElement(element);
+    }
+
+    return this.element as HTMLElement;
+  }
 
   protected setElement(element: HTMLElement): void {
     if (this.element && this.element.parentElement) {
@@ -15,14 +24,6 @@ abstract class Component<
     }
 
     this.element = element;
-  }
-
-  getElement(): HTMLElement {
-    if (!this.element) {
-      this.render();
-    }
-
-    return this.element as HTMLElement;
   }
 }
 

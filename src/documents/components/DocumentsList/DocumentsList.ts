@@ -1,19 +1,14 @@
 import Component from "../../../components/Component";
 import HeadingComponent from "../../../components/Heading/Heading";
-import type { ComponentProps } from "../../../components/types";
 import type { DocumentViewModel } from "../../viewModel/types";
 import styles from "./DocumentsList.module.css";
 
-type DocumentsProps = {
+type DocumentsListComponentProps = {
   documents: DocumentViewModel[];
 };
 
-class DocumentsList extends Component<DocumentsProps> {
-  constructor(props: ComponentProps<DocumentsProps>) {
-    super(props);
-  }
-
-  render(): void {
+class DocumentsListComponent extends Component<DocumentsListComponentProps> {
+  render(): HTMLElement {
     const container = document.createElement("table");
     container.className = styles.documents;
 
@@ -90,8 +85,8 @@ class DocumentsList extends Component<DocumentsProps> {
 
     container.appendChild(tbody);
 
-    this.setElement(container);
+    return container;
   }
 }
 
-export default DocumentsList;
+export default DocumentsListComponent;

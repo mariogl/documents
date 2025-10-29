@@ -1,5 +1,5 @@
 import type { DocumentsClient } from "../../documents/client/types";
-import DocumentsList from "../../documents/components/DocumentsList/DocumentsList";
+import DocumentsListComponent from "../../documents/components/DocumentsList/DocumentsList";
 import type { DocumentViewModel } from "../../documents/viewModel/types";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
@@ -20,11 +20,12 @@ class AppComponent extends Component<AppComponentProps> {
     props.documentsClient.getDocuments().then((fetchedDocuments) => {
       this.documents.push(...fetchedDocuments);
 
-      this.render();
+      const updatedElement = this.render();
+      this.setElement(updatedElement);
     });
   }
 
-  protected render(): void {
+  protected render(): HTMLElement {
     const container = document.createElement("div");
     container.classList.add(styles.appContainer);
 
@@ -37,18 +38,19 @@ class AppComponent extends Component<AppComponentProps> {
     const mainHeader = new MainHeaderComponent({
       children: appTitle.getElement(),
     });
-    const documentsList = new DocumentsList({
-      documents: this.documents,
-    });
-
     container.appendChild(mainHeader.getElement());
 
     const main = document.createElement("main");
+
+    const documentsList = new DocumentsListComponent({
+      documents: this.documents,
+    });
+
     main.appendChild(documentsList.getElement());
 
     container.appendChild(main);
 
-    this.setElement(container);
+    return container;
   }
 }
 
