@@ -26,7 +26,7 @@ class AppComponent extends Component<AppComponentProps> {
     });
   }
 
-  protected render(): HTMLElement {
+  protected render(): Element {
     const container = document.createElement("div");
     container.classList.add(styles.appContainer);
 

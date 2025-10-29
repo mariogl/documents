@@ -6,7 +6,7 @@ type HeadingComponentProps = {
 };
 
 class HeadingComponent extends Component<HeadingComponentProps> {
-  render(): HTMLElement {
+  protected render(): Element {
     const heading = document.createElement(`h${this.props.level}`);
 
     const baseClassName = "heading";

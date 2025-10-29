@@ -11,7 +11,7 @@ type DocumentItemComponentProps = {
 };
 
 class DocumentItemComponent extends Component<DocumentItemComponentProps> {
-  render(): HTMLElement {
+  protected render(): Element {
     const { name, version, contributors, attachments } = this.props.document;
 
     const documentName = document.createElement("h2");

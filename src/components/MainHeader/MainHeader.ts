@@ -3,7 +3,7 @@ import Component from "../Component";
 import styles from "./MainHeader.module.css";
 
 class MainHeaderComponent extends Component {
-  protected render(): HTMLElement {
+  protected render(): Element {
     const header = document.createElement("header");
 
     const baseClassName = styles.mainHeader;

@@ -9,7 +9,7 @@ type DocumentsComponentProps = {
 };
 
 class DocumentsComponent extends Component<DocumentsComponentProps> {
-  render(): HTMLElement {
+  protected render(): Element {
     const layout = new DocumentsLayout(this.props.documents);
 
     const layouts: Record<LayoutType, () => HTMLElement> = {
