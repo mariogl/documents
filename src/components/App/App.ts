@@ -1,25 +1,29 @@
+import type { DocumentsClient } from "../../documents/client/types";
 import DocumentsList from "../../documents/components/DocumentsList/DocumentsList";
 import type { DocumentViewModel } from "../../documents/viewModel/types";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
 import MainHeaderComponent from "../MainHeader/MainHeader";
+import type { ComponentProps } from "../types";
 import styles from "./App.module.css";
 
-const documents: DocumentViewModel[] = [
-  {
-    id: "1",
-    name: "Project Plan",
-    contributors: ["Alice Smith", "Bob Johnson"],
-    attachments: ["Light Lager", "Light Hybrid Beer", "Pilsner"],
-  },
-  {
-    id: "2",
-    name: "Design Document",
-    contributors: ["Charlie Brown", "Dana White"],
-    attachments: ["Stout", "Porter"],
-  },
-];
-class AppComponent extends Component {
+type AppComponentProps = {
+  documentsClient: DocumentsClient;
+};
+
+class AppComponent extends Component<AppComponentProps> {
+  private documents: DocumentViewModel[] = [];
+
+  constructor(props: ComponentProps<AppComponentProps>) {
+    super(props);
+
+    props.documentsClient.getDocuments().then((fetchedDocuments) => {
+      this.documents.push(...fetchedDocuments);
+
+      this.render();
+    });
+  }
+
   protected render(): void {
     const container = document.createElement("div");
     container.classList.add(styles.appContainer);
@@ -34,7 +38,7 @@ class AppComponent extends Component {
       children: appTitle.getElement(),
     });
     const documentsList = new DocumentsList({
-      documents,
+      documents: this.documents,
     });
 
     container.appendChild(mainHeader.getElement());
