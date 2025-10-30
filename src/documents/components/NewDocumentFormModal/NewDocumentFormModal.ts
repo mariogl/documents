@@ -3,9 +3,9 @@ import HeadingComponent from "../../../shared/components/Heading/Heading";
 import IconComponent from "../../../shared/components/Icon/Icon";
 import IconButtonComponent from "../../../shared/components/IconButton/IconButton";
 
-import styles from "./NewDocumentForm.module.css";
+import styles from "./NewDocumentFormModal.module.css";
 
-class NewDocumentFormComponent extends Component {
+class NewDocumentFormModalComponent extends Component {
   protected render(): Element {
     const dialog = document.createElement("dialog");
     dialog.className = styles.modal;
@@ -31,7 +31,7 @@ class NewDocumentFormComponent extends Component {
   private createTitle() {
     const formTitle = new HeadingComponent({
       level: 2,
-      text: "New Document",
+      text: "Add New Document",
       className: styles.modal__title,
     });
 
@@ -60,4 +60,4 @@ class NewDocumentFormComponent extends Component {
   }
 }
 
-export default NewDocumentFormComponent;
+export default NewDocumentFormModalComponent;

@@ -10,7 +10,7 @@ import type { LayoutType } from "../DocumentItem/types";
 import DocumentsComponent from "../Documents/Documents";
 import DocumentsLayoutModeComponent from "../DocumentsLayoutMode/DocumentsLayoutMode";
 import DocumentsSortingComponent from "../DocumentsSorting/DocumentsSorting";
-import NewDocumentFormComponent from "../NewDocumentForm/NewDocumentForm";
+import NewDocumentFormModalComponent from "../NewDocumentFormModal/NewDocumentFormModal";
 
 import styles from "./DocumentsList.module.css";
 
@@ -130,7 +130,7 @@ class DocumentsListComponent extends Component {
   }
 
   private createForm() {
-    const newDocumentForm = new NewDocumentFormComponent({});
+    const newDocumentForm = new NewDocumentFormModalComponent({});
     return newDocumentForm.getElement();
   }
 }
