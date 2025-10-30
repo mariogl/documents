@@ -6,13 +6,18 @@ import {
   q1ReportDocumentDtoFixture,
   userResearchDocumentDtoFixture,
 } from "../../../documents/fixtures/documentsFixtures";
+import DocumentsService from "../../../documents/services/DocumentsService";
+import DocumentsStore from "../../../documents/store/DocumentsStore";
 import { render } from "../../../testUtils";
 import AppComponent from "./App";
 
 describe("App Component", () => {
   it("should render the documents list", async () => {
     const app = new AppComponent({
-      documentsClient: new FakeDocumentsClient(),
+      documentsService: new DocumentsService(
+        new FakeDocumentsClient(),
+        new DocumentsStore(),
+      ),
     });
     render(app);
 

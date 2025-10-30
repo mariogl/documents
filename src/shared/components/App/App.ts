@@ -1,4 +1,3 @@
-import type { DocumentsClient } from "../../../documents/client/types";
 import DocumentsListComponent from "../../../documents/components/DocumentsList/DocumentsList";
 import type DocumentsService from "../../../documents/services/DocumentsService";
 import Component from "../Component";
@@ -9,7 +8,6 @@ import type { ComponentProps } from "../types";
 import styles from "./App.module.css";
 
 type AppComponentProps = {
-  documentsClient: DocumentsClient;
   documentsService: DocumentsService;
 };
 
