@@ -2,6 +2,7 @@ import Component from "../../../shared/components/Component";
 import type { ComponentProps } from "../../../shared/components/types";
 import { MOBILE_BREAKPOINT } from "../../../shared/config/config";
 import subscribeToMediaQuery from "../../../shared/mediaQuery/mediaQuery";
+import type DocumentsService from "../../services/DocumentsService";
 import type { DocumentViewModel } from "../../viewModel/types";
 import type { LayoutType } from "../DocumentItem/types";
 import DocumentsComponent from "../Documents/Documents";
@@ -11,12 +12,12 @@ import DocumentsSortingComponent from "../DocumentsSorting/DocumentsSorting";
 import styles from "./DocumentsList.module.css";
 
 type DocumentsListComponentProps = {
-  documents: DocumentViewModel[];
+  documentsService: DocumentsService;
 };
 
 class DocumentsListComponent extends Component<DocumentsListComponentProps> {
+  private documents: DocumentViewModel[] = [];
   private layoutType: LayoutType = "list";
-  private documentsComponent: DocumentsComponent | null = null;
   private isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
 
   constructor(props: ComponentProps<DocumentsListComponentProps>) {
@@ -30,6 +31,8 @@ class DocumentsListComponent extends Component<DocumentsListComponentProps> {
   }
 
   protected render(): Element {
+    this.documents = this.props.documentsService.getDocuments();
+
     const container = document.createElement("section");
     container.className = styles.documentsList;
 
@@ -37,8 +40,8 @@ class DocumentsListComponent extends Component<DocumentsListComponentProps> {
     header.className = styles.documentsList__header;
 
     const sortingComponent = new DocumentsSortingComponent({
-      selectedSortBy: "name",
-      onSortChange: (_sortBy) => {},
+      onSortChange: this.onSortChange,
+      documentsService: this.props.documentsService,
     });
     header.appendChild(sortingComponent.getElement());
 
@@ -53,12 +56,12 @@ class DocumentsListComponent extends Component<DocumentsListComponentProps> {
 
     container.appendChild(header);
 
-    this.documentsComponent = new DocumentsComponent({
-      documents: this.props.documents,
+    const documentsComponent = new DocumentsComponent({
+      documents: this.documents,
       layoutType: this.layoutType,
     });
 
-    container.appendChild(this.documentsComponent.getElement());
+    container.appendChild(documentsComponent.getElement());
 
     return container;
   }
@@ -66,8 +69,13 @@ class DocumentsListComponent extends Component<DocumentsListComponentProps> {
   private setLayoutType = (layoutType: LayoutType) => {
     this.layoutType = layoutType;
 
-    const updatedElement = this.render();
-    this.setElement(updatedElement);
+    this.rerender();
+  };
+
+  private onSortChange = () => {
+    this.documents = this.props.documentsService.getDocuments();
+
+    this.rerender();
   };
 }
 

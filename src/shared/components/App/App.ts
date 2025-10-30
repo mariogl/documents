@@ -1,6 +1,6 @@
 import type { DocumentsClient } from "../../../documents/client/types";
 import DocumentsListComponent from "../../../documents/components/DocumentsList/DocumentsList";
-import type { DocumentViewModel } from "../../../documents/viewModel/types";
+import type DocumentsService from "../../../documents/services/DocumentsService";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
 import MainHeaderComponent from "../MainHeader/MainHeader";
@@ -10,19 +10,15 @@ import styles from "./App.module.css";
 
 type AppComponentProps = {
   documentsClient: DocumentsClient;
+  documentsService: DocumentsService;
 };
 
 class AppComponent extends Component<AppComponentProps> {
-  private documents: DocumentViewModel[] = [];
-
   constructor(props: ComponentProps<AppComponentProps>) {
     super(props);
 
-    props.documentsClient.getDocuments().then((fetchedDocuments) => {
-      this.documents.push(...fetchedDocuments);
-
-      const updatedElement = this.render();
-      this.setElement(updatedElement);
+    props.documentsService.loadDocuments().then(() => {
+      this.rerender();
     });
   }
 
@@ -44,7 +40,7 @@ class AppComponent extends Component<AppComponentProps> {
     const main = document.createElement("main");
 
     const documentsList = new DocumentsListComponent({
-      documents: this.documents,
+      documentsService: this.props.documentsService,
     });
 
     main.appendChild(documentsList.getElement());

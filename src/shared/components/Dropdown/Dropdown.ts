@@ -45,6 +45,7 @@ class DropdownComponent<OptionValue extends string> extends Component<
     select.addEventListener("change", (event) => {
       const target = event.target as HTMLSelectElement;
       this.props.onChange(target.value as OptionValue);
+      this.props.selectedValue = target.value as OptionValue;
     });
 
     container.appendChild(label);

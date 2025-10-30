@@ -1,10 +1,11 @@
 import Component from "../../../shared/components/Component";
 import DropdownComponent from "../../../shared/components/Dropdown/Dropdown";
+import type DocumentsService from "../../services/DocumentsService";
 import type { DocumentViewModel } from "../../viewModel/types";
 
 import styles from "./DocumentsSorting.module.css";
 
-type DocumentSortableProperties = keyof Pick<
+export type DocumentSortableProperties = keyof Pick<
   DocumentViewModel,
   "name" | "version" | "createdAt"
 >;
@@ -15,7 +16,7 @@ type SortingOptions = {
 }[];
 
 type DocumentsSortingProps = {
-  selectedSortBy: DocumentSortableProperties;
+  documentsService: DocumentsService;
   onSortChange: (sortBy: DocumentSortableProperties) => void;
 };
 
@@ -40,14 +41,19 @@ class DocumentsSortingComponent extends Component<DocumentsSortingProps> {
       label: "Sort by:",
       id: "sortBy",
       options: this.sortingOptions,
-      selectedValue: this.props.selectedSortBy,
-      onChange: this.props.onSortChange,
+      selectedValue: this.props.documentsService.getSortBy(),
+      onChange: this.handleSortChange,
     });
 
     container.appendChild(dropdown.getElement());
 
     return container;
   }
+
+  private handleSortChange = (sortBy: DocumentSortableProperties) => {
+    this.props.documentsService.setSortBy(sortBy);
+    this.props.onSortChange(sortBy);
+  };
 }
 
 export default DocumentsSortingComponent;

@@ -25,6 +25,11 @@ abstract class Component<
 
     this.element = element;
   }
+
+  protected rerender(): void {
+    const updatedElement = this.render();
+    this.setElement(updatedElement);
+  }
 }
 
 export default Component;

@@ -25,8 +25,7 @@ class DocumentsComponent extends Component<DocumentsComponentProps> {
   updateLayout(layoutType: LayoutType): void {
     this.currentLayoutType = layoutType;
 
-    const updatedElement = this.render();
-    this.setElement(updatedElement);
+    this.rerender();
   }
 }
 
