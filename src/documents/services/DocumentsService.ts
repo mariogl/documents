@@ -26,6 +26,10 @@ class DocumentsService {
   setSortBy(sortBy: DocumentSortableProperties): void {
     this.documentsStore.setSortBy(sortBy);
   }
+
+  subscribe(listener: () => void) {
+    this.documentsStore.subscribe(listener);
+  }
 }
 
 export default DocumentsService;

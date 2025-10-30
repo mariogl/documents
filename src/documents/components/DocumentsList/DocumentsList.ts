@@ -22,6 +22,9 @@ class DocumentsListComponent extends Component {
     super(props);
 
     this.documentsService = documentsServiceContext.consume();
+    this.documentsService.subscribe(() => {
+      this.rerender();
+    });
 
     subscribeToMediaQuery(MOBILE_BREAKPOINT, (isMobile) => {
       this.isMobile = isMobile;
@@ -73,8 +76,6 @@ class DocumentsListComponent extends Component {
 
   private onSortChange = () => {
     this.documents = this.documentsService.getDocuments();
-
-    this.rerender();
   };
 }
 

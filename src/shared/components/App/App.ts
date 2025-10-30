@@ -12,9 +12,11 @@ class AppComponent extends Component {
     super(props);
 
     const documentsService = documentsServiceContext.consume();
-    documentsService.loadDocuments().then(() => {
+    documentsService.subscribe(() => {
       this.rerender();
     });
+
+    documentsService.loadDocuments();
   }
 
   protected render(): Element {

@@ -4,9 +4,11 @@ import type { DocumentViewModel } from "../viewModel/types";
 class DocumentsStore {
   private documents: DocumentViewModel[] = [];
   private sortBy: DocumentSortableProperties = "name";
+  private listeners = new Set<() => void>();
 
   setDocuments(documents: DocumentViewModel[]): void {
     this.documents = [...documents];
+    this.notifyListeners();
   }
 
   getDocuments(): DocumentViewModel[] {
@@ -48,6 +50,15 @@ class DocumentsStore {
 
   setSortBy(sortBy: DocumentSortableProperties): void {
     this.sortBy = sortBy;
+    this.notifyListeners();
+  }
+
+  subscribe(listener: () => void) {
+    this.listeners.add(listener);
+  }
+
+  notifyListeners() {
+    this.listeners.forEach((listener) => listener());
   }
 }
 

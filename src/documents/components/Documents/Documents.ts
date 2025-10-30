@@ -21,12 +21,6 @@ class DocumentsComponent extends Component<DocumentsComponentProps> {
 
     return layouts[this.currentLayoutType]();
   }
-
-  updateLayout(layoutType: LayoutType): void {
-    this.currentLayoutType = layoutType;
-
-    this.rerender();
-  }
 }
 
 export default DocumentsComponent;
