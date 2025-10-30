@@ -1,12 +1,12 @@
 import { screen } from "@testing-library/dom";
 
-import FakeDocumentsClient from "../../documents/client/FakeDocumentsClient";
+import FakeDocumentsClient from "../../../documents/client/FakeDocumentsClient";
 import {
   marketingPlanDocumentDtoFixture,
   q1ReportDocumentDtoFixture,
   userResearchDocumentDtoFixture,
-} from "../../documents/fixtures/documentsFixtures";
-import { render } from "../../testUtils";
+} from "../../../documents/fixtures/documentsFixtures";
+import { render } from "../../../testUtils";
 import AppComponent from "./App";
 
 describe("App Component", () => {

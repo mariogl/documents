@@ -1,4 +1,7 @@
-import Component from "../../../components/Component";
+import Component from "../../../shared/components/Component";
+import type { ComponentProps } from "../../../shared/components/types";
+import { MOBILE_BREAKPOINT } from "../../../shared/config/config";
+import subscribeToMediaQuery from "../../../shared/mediaQuery/mediaQuery";
 import type { DocumentViewModel } from "../../viewModel/types";
 import type { LayoutType } from "../DocumentItem/types";
 import DocumentsComponent from "../Documents/Documents";
@@ -13,15 +16,19 @@ type DocumentsListComponentProps = {
 class DocumentsListComponent extends Component<DocumentsListComponentProps> {
   private layoutType: LayoutType = "list";
   private documentsComponent: DocumentsComponent | null = null;
-  private readonly breakpoint = 590;
-  private isMobile = window.innerWidth <= this.breakpoint;
-  private mediaQuery: MediaQueryList | null = null;
+  private isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+
+  constructor(props: ComponentProps<DocumentsListComponentProps>) {
+    super(props);
+
+    subscribeToMediaQuery(MOBILE_BREAKPOINT, (isMobile) => {
+      this.isMobile = isMobile;
+
+      this.setLayoutType(isMobile ? "grid" : "list");
+    });
+  }
 
   protected render(): Element {
-    if (!this.mediaQuery) {
-      this.initializeResponsiveBehavior();
-    }
-
     const container = document.createElement("section");
     container.className = styles.documentsList;
 
@@ -49,36 +56,8 @@ class DocumentsListComponent extends Component<DocumentsListComponentProps> {
     return container;
   }
 
-  private initializeResponsiveBehavior(): void {
-    if (this.isMobile) {
-      this.layoutType = "grid";
-    }
-
-    this.mediaQuery = window.matchMedia(`(max-width: ${this.breakpoint}px)`);
-    this.mediaQuery.addEventListener("change", this.handleMediaChange);
-  }
-
-  private handleMediaChange = (event: MediaQueryListEvent) => {
-    if (event.matches) {
-      this.isMobile = true;
-      this.setLayoutType("grid");
-    } else {
-      this.isMobile = false;
-      this.setLayoutType("list");
-    }
-  };
-
-  private cleanupMediaQuery(): void {
-    if (this.mediaQuery) {
-      this.mediaQuery.removeEventListener("change", this.handleMediaChange);
-      this.mediaQuery = null;
-    }
-  }
-
   private setLayoutType = (layoutType: LayoutType) => {
     this.layoutType = layoutType;
-
-    this.cleanupMediaQuery();
 
     const updatedElement = this.render();
     this.setElement(updatedElement);

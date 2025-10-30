@@ -1,4 +1,4 @@
-import Component from "../../../components/Component";
+import Component from "../../../shared/components/Component";
 import type { DocumentViewModel } from "../../viewModel/types";
 import DocumentLayout from "./layouts/DocumentLayout";
 import type { LayoutType } from "./types";

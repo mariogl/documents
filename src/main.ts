@@ -1,7 +1,7 @@
-import AppComponent from "./components/App/App";
 import FetchDocumentsClient from "./documents/client/FetchDocumentsClient";
+import AppComponent from "./shared/components/App/App";
 
-import "./styles/index.css";
+import "./shared/styles/index.css";
 
 const apiUrlBase = import.meta.env.VITE_API_URL_BASE;
 

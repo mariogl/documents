@@ -1,6 +1,6 @@
-import type { DocumentsClient } from "../../documents/client/types";
-import DocumentsListComponent from "../../documents/components/DocumentsList/DocumentsList";
-import type { DocumentViewModel } from "../../documents/viewModel/types";
+import type { DocumentsClient } from "../../../documents/client/types";
+import DocumentsListComponent from "../../../documents/components/DocumentsList/DocumentsList";
+import type { DocumentViewModel } from "../../../documents/viewModel/types";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
 import MainHeaderComponent from "../MainHeader/MainHeader";
