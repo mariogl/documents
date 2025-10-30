@@ -2,6 +2,7 @@ import Component from "../../../shared/components/Component";
 import HeadingComponent from "../../../shared/components/Heading/Heading";
 import IconComponent from "../../../shared/components/Icon/Icon";
 import IconButtonComponent from "../../../shared/components/IconButton/IconButton";
+import NewDocumentFormComponent from "../NewDocumentForm/NewDocumentForm";
 
 import styles from "./NewDocumentFormModal.module.css";
 
@@ -13,6 +14,7 @@ class NewDocumentFormModalComponent extends Component {
     const container = this.createContainer();
 
     container.appendChild(this.createTitle());
+    container.appendChild(this.createForm());
     container.appendChild(this.createCloseButton(dialog));
 
     dialog.appendChild(container);
@@ -57,6 +59,11 @@ class NewDocumentFormModalComponent extends Component {
         element.close();
       }
     });
+  }
+
+  private createForm() {
+    const newDocumentForm = new NewDocumentFormComponent({});
+    return newDocumentForm.getElement();
   }
 }
 
