@@ -6,6 +6,7 @@ import type { DocumentViewModel } from "../../viewModel/types";
 import type { LayoutType } from "../DocumentItem/types";
 import DocumentsComponent from "../Documents/Documents";
 import DocumentsLayoutModeComponent from "../DocumentsLayoutMode/DocumentsLayoutMode";
+import DocumentsSortingComponent from "../DocumentsSorting/DocumentsSorting";
 
 import styles from "./DocumentsList.module.css";
 
@@ -34,6 +35,12 @@ class DocumentsListComponent extends Component<DocumentsListComponentProps> {
 
     const header = document.createElement("header");
     header.className = styles.documentsList__header;
+
+    const sortingComponent = new DocumentsSortingComponent({
+      selectedSortBy: "name",
+      onSortChange: (_sortBy) => {},
+    });
+    header.appendChild(sortingComponent.getElement());
 
     const layoutModeButtons = new DocumentsLayoutModeComponent({
       layoutType: this.layoutType,
