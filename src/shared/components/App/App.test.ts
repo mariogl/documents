@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/dom";
 
 import FakeDocumentsClient from "../../../documents/client/FakeDocumentsClient";
+import { documentsServiceContext } from "../../../documents/context/DocumentsContext";
 import {
   marketingPlanDocumentDtoFixture,
   q1ReportDocumentDtoFixture,
@@ -9,14 +10,13 @@ import {
 import DocumentsServiceFactory from "../../../documents/services/DocumentsServiceFactory";
 import { render } from "../../../testUtils";
 import AppComponent from "./App";
-
 describe("App Component", () => {
   it("should render the documents list", async () => {
-    const app = new AppComponent({
-      documentsService: DocumentsServiceFactory.createForTesting(
-        new FakeDocumentsClient(),
-      ),
-    });
+    documentsServiceContext.provide(
+      DocumentsServiceFactory.createForTesting(new FakeDocumentsClient()),
+    );
+
+    const app = new AppComponent({});
     render(app);
 
     const q1ReportDocumentName = await screen.findByRole("heading", {

@@ -1,5 +1,5 @@
 import DocumentsListComponent from "../../../documents/components/DocumentsList/DocumentsList";
-import type DocumentsService from "../../../documents/services/DocumentsService";
+import { documentsServiceContext } from "../../../documents/context/DocumentsContext";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
 import MainHeaderComponent from "../MainHeader/MainHeader";
@@ -7,15 +7,12 @@ import type { ComponentProps } from "../types";
 
 import styles from "./App.module.css";
 
-type AppComponentProps = {
-  documentsService: DocumentsService;
-};
-
-class AppComponent extends Component<AppComponentProps> {
-  constructor(props: ComponentProps<AppComponentProps>) {
+class AppComponent extends Component {
+  constructor(props: ComponentProps) {
     super(props);
 
-    props.documentsService.loadDocuments().then(() => {
+    const documentsService = documentsServiceContext.consume();
+    documentsService.loadDocuments().then(() => {
       this.rerender();
     });
   }
@@ -37,9 +34,7 @@ class AppComponent extends Component<AppComponentProps> {
 
     const main = document.createElement("main");
 
-    const documentsList = new DocumentsListComponent({
-      documentsService: this.props.documentsService,
-    });
+    const documentsList = new DocumentsListComponent({});
 
     main.appendChild(documentsList.getElement());
 

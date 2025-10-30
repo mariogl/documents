@@ -2,6 +2,7 @@ import Component from "../../../shared/components/Component";
 import type { ComponentProps } from "../../../shared/components/types";
 import { MOBILE_BREAKPOINT } from "../../../shared/config/config";
 import subscribeToMediaQuery from "../../../shared/mediaQuery/mediaQuery";
+import { documentsServiceContext } from "../../context/DocumentsContext";
 import type DocumentsService from "../../services/DocumentsService";
 import type { DocumentViewModel } from "../../viewModel/types";
 import type { LayoutType } from "../DocumentItem/types";
@@ -11,17 +12,16 @@ import DocumentsSortingComponent from "../DocumentsSorting/DocumentsSorting";
 
 import styles from "./DocumentsList.module.css";
 
-type DocumentsListComponentProps = {
-  documentsService: DocumentsService;
-};
-
-class DocumentsListComponent extends Component<DocumentsListComponentProps> {
+class DocumentsListComponent extends Component {
   private documents: DocumentViewModel[] = [];
+  private documentsService: DocumentsService;
   private layoutType: LayoutType = "list";
   private isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
 
-  constructor(props: ComponentProps<DocumentsListComponentProps>) {
+  constructor(props: ComponentProps) {
     super(props);
+
+    this.documentsService = documentsServiceContext.consume();
 
     subscribeToMediaQuery(MOBILE_BREAKPOINT, (isMobile) => {
       this.isMobile = isMobile;
@@ -31,7 +31,7 @@ class DocumentsListComponent extends Component<DocumentsListComponentProps> {
   }
 
   protected render(): Element {
-    this.documents = this.props.documentsService.getDocuments();
+    this.documents = this.documentsService.getDocuments();
 
     const container = document.createElement("section");
     container.className = styles.documentsList;
@@ -41,7 +41,6 @@ class DocumentsListComponent extends Component<DocumentsListComponentProps> {
 
     const sortingComponent = new DocumentsSortingComponent({
       onSortChange: this.onSortChange,
-      documentsService: this.props.documentsService,
     });
     header.appendChild(sortingComponent.getElement());
 
@@ -73,7 +72,7 @@ class DocumentsListComponent extends Component<DocumentsListComponentProps> {
   };
 
   private onSortChange = () => {
-    this.documents = this.props.documentsService.getDocuments();
+    this.documents = this.documentsService.getDocuments();
 
     this.rerender();
   };
