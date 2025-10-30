@@ -8,6 +8,7 @@ type IconButtonProps = {
   text: string;
   role?: string;
   isChecked?: boolean;
+  className?: string;
   onClick: () => void;
 };
 
@@ -16,7 +17,11 @@ class IconButtonComponent extends Component<IconButtonProps> {
     const button = document.createElement("button");
     button.appendChild(this.props.icon.getElement());
 
-    button.className = styles.iconButton;
+    const baseClassName = styles.iconButton;
+
+    button.className = this.props.className
+      ? `${baseClassName} ${this.props.className}`
+      : baseClassName;
 
     this.configureButtonAccessibility(button);
 
