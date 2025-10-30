@@ -1,11 +1,11 @@
 .appContainer {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 10px 32px;
+  padding: 0 10px var(--padding-containers);
 
   @media (width >= 768px) {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: var(--padding-containers);
+    padding-right: var(--padding-containers);
   }
 }
 

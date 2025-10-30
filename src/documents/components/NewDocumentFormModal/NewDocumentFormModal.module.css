@@ -40,17 +40,18 @@
 .modal__container {
   height: 100%;
   position: relative;
-  padding: 16px;
+  padding: var(--padding-containers);
 }
 
 .modal__closeButton {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: var(--padding-containers);
+  right: var(--padding-containers);
   border-radius: 50%;
   border: 1px solid var(--color-border-dark);
 }
 
 .modal__title {
   font-weight: 600;
+  margin-bottom: 20px;
 }
