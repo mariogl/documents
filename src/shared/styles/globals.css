@@ -21,7 +21,8 @@ h6 {
 }
 
 button,
-select {
+select,
+input {
   font: inherit;
   background: none;
   border: none;

@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+}
+
+.form--vertical {
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form__group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form__group--vertical {
+  flex-direction: column;
+  align-items: flex-start;
+}

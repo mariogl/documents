@@ -29,7 +29,7 @@ class DropdownComponent<OptionValue extends string> extends Component<
 
   private createContainer() {
     const container = document.createElement("div");
-    container.className = styles.dropdownGroup;
+    container.className = "form__group";
     return container;
   }
 
