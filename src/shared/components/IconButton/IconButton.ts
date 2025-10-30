@@ -18,6 +18,14 @@ class IconButtonComponent extends Component<IconButtonProps> {
 
     button.className = styles.iconButton;
 
+    this.configureButtonAccessibility(button);
+
+    button.addEventListener("click", this.props.onClick);
+
+    return button;
+  }
+
+  private configureButtonAccessibility(button: HTMLButtonElement) {
     button.setAttribute("aria-label", this.props.text);
 
     if (this.props.role) {
@@ -29,16 +37,18 @@ class IconButtonComponent extends Component<IconButtonProps> {
 
       if (!this.props.isChecked) {
         button.classList.add(styles["iconButton--unchecked"]);
-      } else {
-        setTimeout(() => {
-          button.focus();
-        });
       }
+
+      this.forceFocusOnCheck(button);
     }
+  }
 
-    button.addEventListener("click", this.props.onClick);
-
-    return button;
+  private forceFocusOnCheck(button: HTMLButtonElement) {
+    if (this.props.isChecked) {
+      setTimeout(() => {
+        button.focus();
+      });
+    }
   }
 }
 
