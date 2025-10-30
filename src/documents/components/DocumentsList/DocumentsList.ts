@@ -10,6 +10,7 @@ import type { LayoutType } from "../DocumentItem/types";
 import DocumentsComponent from "../Documents/Documents";
 import DocumentsLayoutModeComponent from "../DocumentsLayoutMode/DocumentsLayoutMode";
 import DocumentsSortingComponent from "../DocumentsSorting/DocumentsSorting";
+import NewDocumentFormComponent from "../NewDocumentForm/NewDocumentForm";
 
 import styles from "./DocumentsList.module.css";
 
@@ -76,8 +77,17 @@ class DocumentsListComponent extends Component {
     const createButton = new ButtonComponent({
       text: "+ Add document",
       size: this.layoutType === "list" ? "full" : "auto",
+      onclick: () => {
+        newDocumentFormModal.showModal();
+      },
     });
     buttonContainer.appendChild(createButton.getElement());
+
+    const newDocumentForm = new NewDocumentFormComponent({});
+    container.appendChild(newDocumentForm.getElement());
+
+    const newDocumentFormModal =
+      newDocumentForm.getElement() as HTMLDialogElement;
 
     return container;
   }

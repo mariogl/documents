@@ -35,3 +35,9 @@ button {
   cursor: pointer;
   padding: 0;
 }
+
+dialog {
+  border: none;
+  background: none;
+  padding: 0;
+}
