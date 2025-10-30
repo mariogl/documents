@@ -16,6 +16,7 @@ abstract class BaseDocumentsClient implements DocumentsClient {
       ),
       attachments: documentDto.Attachments,
       version: documentDto.Version,
+      createdAt: new Date(documentDto.CreatedAt),
     };
   }
 }

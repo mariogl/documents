@@ -11,6 +11,7 @@ class DocumentsFixtureFactory {
       contributors: ["Alice Smith", "Bob Johnson"],
       attachments: ["file1", "file2", "file3"],
       version: "1.0.0",
+      createdAt: new Date(),
       ...overrides,
     };
   }
@@ -27,6 +28,7 @@ class DocumentsFixtureFactory {
       ],
       Attachments: ["file1", "file2"],
       Version: "2.15.4",
+      CreatedAt: new Date().toISOString(),
       ...overrides,
     };
   }

@@ -7,4 +7,5 @@ export type DocumentDto = {
   ID: string;
   Title: string;
   Version: string;
+  CreatedAt: string;
 };
