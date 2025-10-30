@@ -19,13 +19,29 @@ class DropdownComponent<OptionValue extends string> extends Component<
   DropdownComponentProps<OptionValue>
 > {
   protected render(): Element {
+    const container = this.createContainer();
+
+    container.appendChild(this.createLabel());
+    container.appendChild(this.createSelect());
+
+    return container;
+  }
+
+  private createContainer() {
     const container = document.createElement("div");
     container.className = styles.dropdownGroup;
+    return container;
+  }
 
+  private createLabel() {
     const label = document.createElement("label");
     label.textContent = this.props.label;
     label.htmlFor = this.props.id;
 
+    return label;
+  }
+
+  private createSelect() {
     const select = document.createElement("select");
     select.className = styles.dropdown;
     select.id = this.props.id;
@@ -48,10 +64,7 @@ class DropdownComponent<OptionValue extends string> extends Component<
       this.props.selectedValue = target.value as OptionValue;
     });
 
-    container.appendChild(label);
-    container.appendChild(select);
-
-    return container;
+    return select;
   }
 }
 

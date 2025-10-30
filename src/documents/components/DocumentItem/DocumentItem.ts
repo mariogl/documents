@@ -12,30 +12,10 @@ type DocumentItemComponentProps = {
 
 class DocumentItemComponent extends Component<DocumentItemComponentProps> {
   protected render(): Element {
-    const { name, version, contributors, attachments } = this.props.document;
-
-    const documentName = document.createElement("h2");
-    documentName.className = styles.document__name;
-    documentName.textContent = name;
-
-    const documentVersion = document.createElement("span");
-    documentVersion.textContent = `Version: ${version}`;
-
-    const documentContributorsList = document.createElement("ul");
-    documentContributorsList.className = styles.document__list;
-    contributors.forEach((contributor) => {
-      const contributorItem = document.createElement("li");
-      contributorItem.textContent = contributor;
-      documentContributorsList.appendChild(contributorItem);
-    });
-
-    const documentAttachmentsList = document.createElement("ul");
-    documentAttachmentsList.className = styles.document__list;
-    attachments.forEach((attachment) => {
-      const attachmentItem = document.createElement("li");
-      attachmentItem.textContent = attachment;
-      documentAttachmentsList.appendChild(attachmentItem);
-    });
+    const documentName = this.createDocumentName();
+    const documentVersion = this.createDocumentVersion();
+    const documentContributorsList = this.createDocumentContributorList();
+    const documentAttachmentsList = this.createDocumentAttachmentsList();
 
     const layout = new DocumentLayout({
       name: documentName,
@@ -50,6 +30,43 @@ class DocumentItemComponent extends Component<DocumentItemComponentProps> {
     };
 
     return layouts[this.props.layoutType]();
+  }
+
+  private createDocumentName() {
+    const documentName = document.createElement("h2");
+    documentName.className = styles.document__name;
+    documentName.textContent = this.props.document.name;
+
+    return documentName;
+  }
+
+  private createDocumentVersion() {
+    const documentVersion = document.createElement("span");
+    documentVersion.textContent = `Version: ${this.props.document.version}`;
+
+    return documentVersion;
+  }
+
+  private createDocumentContributorList() {
+    const documentContributorsList = document.createElement("ul");
+    documentContributorsList.className = styles.document__list;
+    this.props.document.contributors.forEach((contributor) => {
+      const contributorItem = document.createElement("li");
+      contributorItem.textContent = contributor;
+      documentContributorsList.appendChild(contributorItem);
+    });
+    return documentContributorsList;
+  }
+
+  private createDocumentAttachmentsList() {
+    const documentAttachmentsList = document.createElement("ul");
+    documentAttachmentsList.className = styles.document__list;
+    this.props.document.attachments.forEach((attachment) => {
+      const attachmentItem = document.createElement("li");
+      attachmentItem.textContent = attachment;
+      documentAttachmentsList.appendChild(attachmentItem);
+    });
+    return documentAttachmentsList;
   }
 }
 

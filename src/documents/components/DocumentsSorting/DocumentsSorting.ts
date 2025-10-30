@@ -37,18 +37,9 @@ class DocumentsSortingComponent extends Component<DocumentsSortingProps> {
   }
 
   protected render(): Element {
-    const container = document.createElement("form");
-    container.className = styles.sort;
+    const container = this.createContainer();
 
-    const dropdown = new DropdownComponent<DocumentSortableProperties>({
-      label: "Sort by:",
-      id: "sortBy",
-      options: this.sortingOptions,
-      selectedValue: this.documentsService.getSortBy(),
-      onChange: this.handleSortChange,
-    });
-
-    container.appendChild(dropdown.getElement());
+    container.appendChild(this.createDropdown());
 
     return container;
   }
@@ -57,6 +48,23 @@ class DocumentsSortingComponent extends Component<DocumentsSortingProps> {
     this.documentsService.setSortBy(sortBy);
     this.props.onSortChange(sortBy);
   };
+
+  private createContainer() {
+    const container = document.createElement("form");
+    container.className = styles.sort;
+    return container;
+  }
+
+  private createDropdown() {
+    const dropdown = new DropdownComponent<DocumentSortableProperties>({
+      label: "Sort by:",
+      id: "sortBy",
+      options: this.sortingOptions,
+      selectedValue: this.documentsService.getSortBy(),
+      onChange: this.handleSortChange,
+    });
+    return dropdown.getElement();
+  }
 }
 
 export default DocumentsSortingComponent;

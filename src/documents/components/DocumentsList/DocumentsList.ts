@@ -38,56 +38,28 @@ class DocumentsListComponent extends Component {
   protected render(): Element {
     this.documents = this.documentsService.getDocuments();
 
-    const container = document.createElement("section");
-    container.className = styles.documentsList;
+    const container = this.createContainer();
 
-    const header = document.createElement("header");
-    header.className = styles.documentsList__header;
+    const header = this.createHeader();
 
-    const sortingComponent = new DocumentsSortingComponent({
-      onSortChange: this.onSortChange,
-    });
-    header.appendChild(sortingComponent.getElement());
-
-    const layoutModeButtons = new DocumentsLayoutModeComponent({
-      layoutType: this.layoutType,
-      onLayoutChange: this.setLayoutType,
-    });
+    header.appendChild(this.createSortingComponent());
 
     if (!this.isMobile) {
-      header.appendChild(layoutModeButtons.getElement());
+      header.appendChild(this.createLayoutModeButtons());
     }
 
     container.appendChild(header);
+    container.appendChild(this.createDocumentsComponent());
 
-    const documentsComponent = new DocumentsComponent({
-      documents: this.documents,
-      layoutType: this.layoutType,
-    });
-
-    container.appendChild(documentsComponent.getElement());
-
-    const buttonContainer = document.createElement("div");
-    if (this.layoutType === "grid") {
-      buttonContainer.className =
-        styles["documentsList__buttonContainer--grid"];
-    }
+    const buttonContainer = this.createButtonContainer();
     container.appendChild(buttonContainer);
 
-    const createButton = new ButtonComponent({
-      text: "+ Add document",
-      size: this.layoutType === "list" ? "full" : "auto",
-      onclick: () => {
-        newDocumentFormModal.showModal();
-      },
-    });
-    buttonContainer.appendChild(createButton.getElement());
+    const newDocumentForm = this.createForm();
+    container.appendChild(newDocumentForm);
 
-    const newDocumentForm = new NewDocumentFormComponent({});
-    container.appendChild(newDocumentForm.getElement());
+    const newDocumentFormModal = newDocumentForm as HTMLDialogElement;
 
-    const newDocumentFormModal =
-      newDocumentForm.getElement() as HTMLDialogElement;
+    buttonContainer.appendChild(this.createButton(newDocumentFormModal));
 
     return container;
   }
@@ -101,6 +73,66 @@ class DocumentsListComponent extends Component {
   private onSortChange = () => {
     this.documents = this.documentsService.getDocuments();
   };
+
+  private createContainer() {
+    const container = document.createElement("section");
+    container.className = styles.documentsList;
+    return container;
+  }
+
+  private createHeader() {
+    const header = document.createElement("header");
+    header.className = styles.documentsList__header;
+    return header;
+  }
+
+  private createSortingComponent() {
+    const sortingComponent = new DocumentsSortingComponent({
+      onSortChange: this.onSortChange,
+    });
+    return sortingComponent.getElement();
+  }
+
+  private createLayoutModeButtons() {
+    const buttons = new DocumentsLayoutModeComponent({
+      layoutType: this.layoutType,
+      onLayoutChange: this.setLayoutType,
+    });
+    return buttons.getElement();
+  }
+
+  private createDocumentsComponent() {
+    const documentsComponent = new DocumentsComponent({
+      documents: this.documents,
+      layoutType: this.layoutType,
+    });
+    return documentsComponent.getElement();
+  }
+
+  private createButtonContainer() {
+    const buttonContainer = document.createElement("div");
+    if (this.layoutType === "grid") {
+      buttonContainer.className =
+        styles["documentsList__buttonContainer--grid"];
+    }
+    return buttonContainer;
+  }
+
+  private createButton(modal: HTMLDialogElement) {
+    const createButton = new ButtonComponent({
+      text: "+ Add document",
+      size: this.layoutType === "list" ? "full" : "auto",
+      onclick: () => {
+        modal.showModal();
+      },
+    });
+    return createButton.getElement();
+  }
+
+  private createForm() {
+    const newDocumentForm = new NewDocumentFormComponent({});
+    return newDocumentForm.getElement();
+  }
 }
 
 export default DocumentsListComponent;
