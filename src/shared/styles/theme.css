@@ -4,14 +4,16 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   --heading-1-font-size: 2rem;
 
-  --color-accent: #3b82f6;
+  --color-accent: #4338ca;
   --color-text-primary: #1f2937;
   --color-text-secondary: #6b7280;
-  --color-background-primary: #f8f9fa;
+  --color-background-primary: #f8fafc;
   --color-background-secondary: #fff;
   --color-background-hover: #f3f4f6;
   --color-border: #e5e7eb;
   --color-border-light: #f3f4f6;
+  --color-button-background: #e6e7f7;
+  --color-button-background-hover: #d3d3f2;
 
   --shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }

@@ -1,0 +1,20 @@
+.button {
+  color: var(--color-accent);
+  background-color: var(--color-button-background);
+  border-radius: 6px;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-button-background-hover);
+  }
+}
+
+.button--auto {
+  width: auto;
+}
+
+.button--full {
+  width: 100%;
+}
