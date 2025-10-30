@@ -1,3 +1,4 @@
+import ButtonComponent from "../../../shared/components/Button/Button";
 import Component from "../../../shared/components/Component";
 import type { ComponentProps } from "../../../shared/components/types";
 import { MOBILE_BREAKPOINT } from "../../../shared/config/config";
@@ -64,6 +65,19 @@ class DocumentsListComponent extends Component {
     });
 
     container.appendChild(documentsComponent.getElement());
+
+    const buttonContainer = document.createElement("div");
+    if (this.layoutType === "grid") {
+      buttonContainer.className =
+        styles["documentsList__buttonContainer--grid"];
+    }
+    container.appendChild(buttonContainer);
+
+    const createButton = new ButtonComponent({
+      text: "+ Add document",
+      size: this.layoutType === "list" ? "full" : "auto",
+    });
+    buttonContainer.appendChild(createButton.getElement());
 
     return container;
   }
