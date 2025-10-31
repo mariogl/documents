@@ -1,3 +1,4 @@
+import { toast } from "../../shared/toast/ToastService";
 import type { DocumentsClient } from "../client/types";
 import type { DocumentSortableProperties } from "../components/DocumentsSorting/DocumentsSorting";
 import type DocumentsStore from "../store/DocumentsStore";
@@ -10,9 +11,16 @@ class DocumentsService {
   ) {}
 
   async loadDocuments(): Promise<void> {
-    const documents = await this.documentsClient.getDocuments();
+    try {
+      const documents = await this.documentsClient.getDocuments();
 
-    this.documentsStore.setDocuments(documents);
+      this.documentsStore.setDocuments(documents);
+    } catch {
+      toast.show({
+        type: "error",
+        message: "Failed to load documents. Please try again later.",
+      });
+    }
   }
 
   getDocuments(): Document[] {
