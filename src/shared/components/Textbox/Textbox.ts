@@ -44,6 +44,7 @@ class TextboxComponent extends Component<TextboxProps> {
   private createInput(id: string) {
     const input = document.createElement("input");
     input.id = id;
+    input.name = id;
     return input;
   }
 }

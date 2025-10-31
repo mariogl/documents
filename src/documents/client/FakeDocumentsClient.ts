@@ -4,11 +4,11 @@ import {
   q1ReportDocumentDtoFixture,
   userResearchDocumentDtoFixture,
 } from "../fixtures/documentsFixtures";
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document, NewDocumentData } from "../types";
 import BaseDocumentsClient from "./BaseDocumentsClient";
 
 class FakeDocumentsClient extends BaseDocumentsClient {
-  async getDocuments(): Promise<DocumentViewModel[]> {
+  async getDocuments(): Promise<Document[]> {
     const documentsDto: DocumentDto[] = [
       q1ReportDocumentDtoFixture,
       userResearchDocumentDtoFixture,
@@ -16,6 +16,10 @@ class FakeDocumentsClient extends BaseDocumentsClient {
     ];
 
     return documentsDto.map(this.mapDocumentDtoToViewModel);
+  }
+
+  async saveDocument(_newDocumentData: NewDocumentData): Promise<Document> {
+    throw new Error("Method not implemented.");
   }
 }
 

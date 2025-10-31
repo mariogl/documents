@@ -1,13 +1,13 @@
 import type { DocumentDto } from "../dto/types";
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document, NewDocumentData } from "../types";
 import type { DocumentsClient } from "./types";
 
 abstract class BaseDocumentsClient implements DocumentsClient {
-  abstract getDocuments(): Promise<DocumentViewModel[]>;
+  abstract getDocuments(): Promise<Document[]>;
 
-  protected mapDocumentDtoToViewModel(
-    documentDto: DocumentDto,
-  ): DocumentViewModel {
+  abstract saveDocument(document: NewDocumentData): Promise<Document>;
+
+  protected mapDocumentDtoToViewModel(documentDto: DocumentDto): Document {
     return {
       id: documentDto.ID,
       name: documentDto.Title,

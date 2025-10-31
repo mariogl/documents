@@ -2,11 +2,23 @@ import Component from "../../../shared/components/Component";
 import HeadingComponent from "../../../shared/components/Heading/Heading";
 import IconComponent from "../../../shared/components/Icon/Icon";
 import IconButtonComponent from "../../../shared/components/IconButton/IconButton";
+import type { ComponentProps } from "../../../shared/components/types";
+import { documentsServiceContext } from "../../context/DocumentsContext";
+import type DocumentsService from "../../services/DocumentsService";
+import type { NewDocumentData } from "../../types";
 import NewDocumentFormComponent from "../NewDocumentForm/NewDocumentForm";
 
 import styles from "./NewDocumentFormModal.module.css";
 
 class NewDocumentFormModalComponent extends Component {
+  private documentsService: DocumentsService;
+
+  constructor(props: ComponentProps) {
+    super(props);
+
+    this.documentsService = documentsServiceContext.consume();
+  }
+
   protected render(): Element {
     const dialog = document.createElement("dialog");
     dialog.className = styles.modal;
@@ -22,6 +34,10 @@ class NewDocumentFormModalComponent extends Component {
     this.closeOnOutsideClick(dialog);
 
     return dialog;
+  }
+
+  private async onSubmit(data: NewDocumentData) {
+    await this.documentsService.addDocument(data);
   }
 
   private createContainer() {
@@ -62,7 +78,9 @@ class NewDocumentFormModalComponent extends Component {
   }
 
   private createForm() {
-    const newDocumentForm = new NewDocumentFormComponent({});
+    const newDocumentForm = new NewDocumentFormComponent({
+      onSubmit: this.onSubmit.bind(this),
+    });
     return newDocumentForm.getElement();
   }
 }

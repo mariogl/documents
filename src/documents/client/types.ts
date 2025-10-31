@@ -1,5 +1,6 @@
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document, NewDocumentData } from "../types";
 
 export interface DocumentsClient {
-  getDocuments(): Promise<DocumentViewModel[]>;
+  getDocuments(): Promise<Document[]>;
+  saveDocument(newDocumentData: NewDocumentData): Promise<Document>;
 }

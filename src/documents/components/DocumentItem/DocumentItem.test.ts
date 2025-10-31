@@ -2,11 +2,11 @@ import { screen } from "@testing-library/dom";
 
 import { render } from "../../../testUtils";
 import DocumentsFixtureFactory from "../../fixtures/DocumentsFixtureFactory";
-import type { DocumentViewModel } from "../../viewModel/types";
+import type { Document } from "../../types";
 import DocumentItemComponent from "./DocumentItem";
 
 describe("DocumentItem Component", () => {
-  let documentFixture: DocumentViewModel;
+  let documentFixture: Document;
 
   beforeEach(() => {
     documentFixture = DocumentsFixtureFactory.createDocumentFixture();

@@ -1,17 +1,17 @@
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document } from "../types";
 import NameSorter from "./NameSorter";
 
 describe("NameSorter", () => {
   it("should sort names correctly", () => {
     const sorter = new NameSorter();
 
-    const doc1: Pick<DocumentViewModel, "name"> = { name: "Report Q4" };
-    const doc2: Pick<DocumentViewModel, "name"> = { name: "Annual Summary" };
-    const doc3: Pick<DocumentViewModel, "name"> = { name: "Budget Plan" };
-    const doc4: Pick<DocumentViewModel, "name"> = { name: "Budapest Report" };
-    const doc5: Pick<DocumentViewModel, "name"> = { name: "2025 Report" };
+    const doc1: Pick<Document, "name"> = { name: "Report Q4" };
+    const doc2: Pick<Document, "name"> = { name: "Annual Summary" };
+    const doc3: Pick<Document, "name"> = { name: "Budget Plan" };
+    const doc4: Pick<Document, "name"> = { name: "Budapest Report" };
+    const doc5: Pick<Document, "name"> = { name: "2025 Report" };
 
-    const documents = [doc1, doc2, doc3, doc4, doc5] as DocumentViewModel[];
+    const documents = [doc1, doc2, doc3, doc4, doc5] as Document[];
     const sortedDocuments = documents.sort(sorter.sort);
 
     expect(sortedDocuments.map((doc) => doc.name)).toEqual([

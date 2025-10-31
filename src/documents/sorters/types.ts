@@ -1,5 +1,5 @@
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document } from "../types";
 
 export interface DocumentsSorter {
-  sort(documentA: DocumentViewModel, documentB: DocumentViewModel): number;
+  sort(documentA: Document, documentB: Document): number;
 }

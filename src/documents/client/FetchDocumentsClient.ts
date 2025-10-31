@@ -1,5 +1,5 @@
 import type { DocumentDto } from "../dto/types";
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document, NewDocumentData } from "../types";
 import BaseDocumentsClient from "./BaseDocumentsClient";
 
 class FetchDocumentsClient extends BaseDocumentsClient {
@@ -7,11 +7,15 @@ class FetchDocumentsClient extends BaseDocumentsClient {
     super();
   }
 
-  async getDocuments(): Promise<DocumentViewModel[]> {
+  async getDocuments(): Promise<Document[]> {
     const response = await fetch(`${this.baseUrl}/documents`);
     const documentsDto: DocumentDto[] = await response.json();
 
     return documentsDto.map(this.mapDocumentDtoToViewModel);
+  }
+
+  async saveDocument(_newDocumentData: NewDocumentData): Promise<Document> {
+    throw new Error("Method not implemented.");
   }
 }
 

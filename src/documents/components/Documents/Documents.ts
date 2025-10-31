@@ -1,10 +1,10 @@
 import Component from "../../../shared/components/Component";
-import type { DocumentViewModel } from "../../viewModel/types";
+import type { Document } from "../../types";
 import type { LayoutType } from "../DocumentItem/types";
 import DocumentsLayout from "./layouts/DocumentsLayout";
 
 type DocumentsComponentProps = {
-  documents: DocumentViewModel[];
+  documents: Document[];
   layoutType: LayoutType;
 };
 

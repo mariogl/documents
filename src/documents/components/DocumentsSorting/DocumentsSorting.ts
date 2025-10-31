@@ -2,12 +2,12 @@ import Component from "../../../shared/components/Component";
 import DropdownComponent from "../../../shared/components/Dropdown/Dropdown";
 import { documentsServiceContext } from "../../context/DocumentsContext";
 import type DocumentsService from "../../services/DocumentsService";
-import type { DocumentViewModel } from "../../viewModel/types";
+import type { Document } from "../../types";
 
 import styles from "./DocumentsSorting.module.css";
 
 export type DocumentSortableProperties = keyof Pick<
-  DocumentViewModel,
+  Document,
   "name" | "version" | "createdAt"
 >;
 

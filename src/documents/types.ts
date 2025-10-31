@@ -1,4 +1,4 @@
-export type DocumentViewModel = {
+export type Document = {
   id: string;
   name: string;
   contributors: string[];
@@ -6,3 +6,5 @@ export type DocumentViewModel = {
   version: string;
   createdAt: Date;
 };
+
+export type NewDocumentData = Omit<Document, "id">;

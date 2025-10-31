@@ -1,10 +1,8 @@
 import type { DocumentDto } from "../dto/types";
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document } from "../types";
 
 class DocumentsFixtureFactory {
-  static createDocumentFixture(
-    overrides: Partial<DocumentViewModel> = {},
-  ): DocumentViewModel {
+  static createDocumentFixture(overrides: Partial<Document> = {}): Document {
     return {
       id: crypto.randomUUID(),
       name: "Test Document",

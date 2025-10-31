@@ -45,6 +45,7 @@ class DropdownComponent<OptionValue extends string> extends Component<
     const select = document.createElement("select");
     select.className = styles.dropdown;
     select.id = this.props.id;
+    select.name = this.props.id;
 
     this.props.options.forEach((option) => {
       const optionElement = document.createElement("option");

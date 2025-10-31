@@ -1,8 +1,8 @@
 import type { DocumentsSorter } from "../sorters/types";
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document } from "../types";
 
 class NameSorter implements DocumentsSorter {
-  sort(documentA: DocumentViewModel, documentB: DocumentViewModel): number {
+  sort(documentA: Document, documentB: Document): number {
     return documentA.name.localeCompare(documentB.name);
   }
 }

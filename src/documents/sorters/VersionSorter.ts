@@ -1,8 +1,8 @@
 import type { DocumentsSorter } from "../sorters/types";
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document } from "../types";
 
 class VersionSorter implements DocumentsSorter {
-  sort(documentA: DocumentViewModel, documentB: DocumentViewModel): number {
+  sort(documentA: Document, documentB: Document): number {
     const versionANumbers = documentA.version.split(".").map(Number);
     const versionBNumbers = documentB.version.split(".").map(Number);
 

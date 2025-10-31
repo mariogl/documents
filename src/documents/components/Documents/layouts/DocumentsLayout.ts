@@ -1,11 +1,11 @@
-import type { DocumentViewModel } from "../../../viewModel/types";
+import type { Document } from "../../../types";
 import DocumentItemComponent from "../../DocumentItem/DocumentItem";
 
 import gridLayoutStyles from "./DocumentsGridLayout.module.css";
 import listLayoutStyles from "./DocumentsListLayout.module.css";
 
 class DocumentsLayout {
-  constructor(private documents: DocumentViewModel[]) {}
+  constructor(private documents: Document[]) {}
 
   generateListLayout(): HTMLElement {
     const container = document.createElement("table");

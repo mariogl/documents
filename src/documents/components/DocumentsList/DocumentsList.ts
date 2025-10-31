@@ -5,7 +5,7 @@ import { MOBILE_BREAKPOINT } from "../../../shared/config/config";
 import subscribeToMediaQuery from "../../../shared/mediaQuery/mediaQuery";
 import { documentsServiceContext } from "../../context/DocumentsContext";
 import type DocumentsService from "../../services/DocumentsService";
-import type { DocumentViewModel } from "../../viewModel/types";
+import type { Document } from "../../types";
 import type { LayoutType } from "../DocumentItem/types";
 import DocumentsComponent from "../Documents/Documents";
 import DocumentsLayoutModeComponent from "../DocumentsLayoutMode/DocumentsLayoutMode";
@@ -15,7 +15,7 @@ import NewDocumentFormModalComponent from "../NewDocumentFormModal/NewDocumentFo
 import styles from "./DocumentsList.module.css";
 
 class DocumentsListComponent extends Component {
-  private documents: DocumentViewModel[] = [];
+  private documents: Document[] = [];
   private documentsService: DocumentsService;
   private layoutType: LayoutType = "list";
   private isMobile = window.innerWidth <= MOBILE_BREAKPOINT;

@@ -2,20 +2,20 @@ import { screen } from "@testing-library/dom";
 
 import { render } from "../../../testUtils";
 import DocumentsFixtureFactory from "../../fixtures/DocumentsFixtureFactory";
-import type { DocumentViewModel } from "../../viewModel/types";
+import type { Document } from "../../types";
 import DocumentsComponent from "./Documents";
 
 describe("Documents Component", () => {
   it("should render the list of documents", () => {
-    const cvDocumentFixture: DocumentViewModel =
+    const cvDocumentFixture: Document =
       DocumentsFixtureFactory.createDocumentFixture({
         name: "CV - Danielle Rossi",
       });
-    const coverLetterDocumentFixture: DocumentViewModel =
+    const coverLetterDocumentFixture: Document =
       DocumentsFixtureFactory.createDocumentFixture({
         name: "Cover Letter - Danielle Rossi",
       });
-    const documentFixtures: DocumentViewModel[] = [
+    const documentFixtures: Document[] = [
       cvDocumentFixture,
       coverLetterDocumentFixture,
     ];

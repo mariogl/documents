@@ -1,8 +1,8 @@
 import type { DocumentsSorter } from "../sorters/types";
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document } from "../types";
 
 class CreatedAtSorter implements DocumentsSorter {
-  sort(documentA: DocumentViewModel, documentB: DocumentViewModel): number {
+  sort(documentA: Document, documentB: Document): number {
     return (
       new Date(documentA.createdAt).getTime() -
       new Date(documentB.createdAt).getTime()

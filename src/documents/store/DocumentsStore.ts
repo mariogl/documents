@@ -1,20 +1,25 @@
 import type { DocumentSortableProperties } from "../components/DocumentsSorting/DocumentsSorting";
 import DocumentsSorterFactory from "../sorters/DocumentsSorterFactory";
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document } from "../types";
 
 class DocumentsStore {
-  private documents: DocumentViewModel[] = [];
+  private documents: Document[] = [];
   private sortBy: DocumentSortableProperties = "name";
   private listeners = new Set<() => void>();
 
-  setDocuments(documents: DocumentViewModel[]): void {
+  setDocuments(documents: Document[]): void {
     this.documents = [...documents];
     this.notifyListeners();
   }
 
-  getDocuments(): DocumentViewModel[] {
+  getDocuments(): Document[] {
     const sorter = DocumentsSorterFactory.create(this.sortBy);
     return [...this.documents].sort(sorter.sort);
+  }
+
+  addDocument(document: Document): void {
+    this.documents.push(document);
+    this.notifyListeners();
   }
 
   getSortBy(): DocumentSortableProperties {

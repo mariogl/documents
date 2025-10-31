@@ -1,7 +1,7 @@
 import type { DocumentsClient } from "../client/types";
 import type { DocumentSortableProperties } from "../components/DocumentsSorting/DocumentsSorting";
 import type DocumentsStore from "../store/DocumentsStore";
-import type { DocumentViewModel } from "../viewModel/types";
+import type { Document, NewDocumentData } from "../types";
 
 class DocumentsService {
   constructor(
@@ -15,8 +15,14 @@ class DocumentsService {
     this.documentsStore.setDocuments(documents);
   }
 
-  getDocuments(): DocumentViewModel[] {
+  getDocuments(): Document[] {
     return this.documentsStore.getDocuments();
+  }
+
+  async addDocument(newDocumentData: NewDocumentData): Promise<void> {
+    const document = await this.documentsClient.saveDocument(newDocumentData);
+
+    this.documentsStore.addDocument(document);
   }
 
   getSortBy(): DocumentSortableProperties {
