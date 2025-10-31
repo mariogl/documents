@@ -4,7 +4,7 @@ import styles from "./Toast.module.css";
 
 class ToastService {
   private timer!: number;
-  private defaultMillisecondsToShow = 200000;
+  private defaultMillisecondsToShow = 3000;
 
   constructor() {}
 
@@ -24,6 +24,10 @@ class ToastService {
     }).getElement();
 
     document.body.appendChild(toast);
+
+    setTimeout(() => {
+      (toast as HTMLDivElement).focus();
+    }, 0);
 
     this.timer = setTimeout(() => {
       this.hide(toast);

@@ -15,6 +15,9 @@ class ToastComponent extends Component<ToastComponentProps> {
     const toast = document.createElement("div");
     toast.className = `${styles.toast} ${styles[`toast--${this.props.type}`]}`;
     toast.textContent = this.props.message;
+    toast.role = "alert";
+    toast.setAttribute("aria-live", "assertive");
+    toast.tabIndex = -1;
 
     const icon = new IconComponent({ name: this.props.type });
     toast.prepend(icon.getElement());
