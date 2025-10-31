@@ -12,6 +12,7 @@ import styles from "./NewDocumentFormModal.module.css";
 
 class NewDocumentFormModalComponent extends Component {
   private documentsService: DocumentsService;
+  private dialog!: HTMLDialogElement;
 
   constructor(props: ComponentProps) {
     super(props);
@@ -21,22 +22,24 @@ class NewDocumentFormModalComponent extends Component {
 
   protected render(): Element {
     const dialog = document.createElement("dialog");
+    this.dialog = dialog;
     dialog.className = styles.modal;
 
     const container = this.createContainer();
 
     container.appendChild(this.createTitle());
     container.appendChild(this.createForm());
-    container.appendChild(this.createCloseButton(dialog));
+    container.appendChild(this.createCloseButton());
 
     dialog.appendChild(container);
 
-    this.closeOnOutsideClick(dialog);
+    this.closeOnOutsideClick();
 
     return dialog;
   }
 
-  private async onSubmit(data: NewDocumentData) {
+  private async onSubmit(data: NewDocumentData, dialog: HTMLDialogElement) {
+    dialog.close();
     await this.documentsService.addDocument(data);
   }
 
@@ -56,30 +59,30 @@ class NewDocumentFormModalComponent extends Component {
     return formTitle.getElement();
   }
 
-  private createCloseButton(dialog: HTMLDialogElement) {
+  private createCloseButton() {
     const closeButton = new IconButtonComponent({
       icon: new IconComponent({ name: "close" }),
       text: "Close",
       className: styles.modal__closeButton,
       onClick: () => {
-        dialog.close();
+        this.dialog.close();
       },
     });
 
     return closeButton.getElement();
   }
 
-  private closeOnOutsideClick(element: HTMLDialogElement) {
-    element.addEventListener("click", (event) => {
+  private closeOnOutsideClick() {
+    this.dialog.addEventListener("click", (event) => {
       if (event.target === this.element) {
-        element.close();
+        this.dialog.close();
       }
     });
   }
 
   private createForm() {
     const newDocumentForm = new NewDocumentFormComponent({
-      onSubmit: this.onSubmit.bind(this),
+      onSubmit: (data) => this.onSubmit(data, this.dialog),
     });
     return newDocumentForm.getElement();
   }

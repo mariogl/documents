@@ -14,6 +14,7 @@ class TextboxComponent extends Component<TextboxProps> {
     const container = this.createContainer();
 
     container.appendChild(this.createLabel(id, label));
+
     const input = this.createInput(id);
 
     const baseClassName = styles.textbox;
@@ -24,6 +25,9 @@ class TextboxComponent extends Component<TextboxProps> {
     Object.assign(input, restProps, { className: finalClassName });
 
     container.appendChild(input);
+
+    const errorMessage = this.createErrorMessage();
+    container.appendChild(errorMessage);
 
     return container;
   }
@@ -36,6 +40,7 @@ class TextboxComponent extends Component<TextboxProps> {
 
   private createLabel(id: string, labelText: string) {
     const label = document.createElement("label");
+    label.className = "form__label";
     label.textContent = labelText;
     label.htmlFor = id;
     return label;
@@ -46,6 +51,15 @@ class TextboxComponent extends Component<TextboxProps> {
     input.id = id;
     input.name = id;
     return input;
+  }
+
+  private createErrorMessage() {
+    const errorMessage = document.createElement("span");
+    errorMessage.className = "form__error";
+    errorMessage.id = `${this.props.id}-error`;
+    errorMessage.role = "alert";
+
+    return errorMessage;
   }
 }
 
