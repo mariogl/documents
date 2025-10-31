@@ -3,6 +3,7 @@ import HeadingComponent from "../../../shared/components/Heading/Heading";
 import IconComponent from "../../../shared/components/Icon/Icon";
 import IconButtonComponent from "../../../shared/components/IconButton/IconButton";
 import type { ComponentProps } from "../../../shared/components/types";
+import { toast } from "../../../shared/toast/ToastService";
 import { documentsServiceContext } from "../../context/DocumentsContext";
 import type DocumentsService from "../../services/DocumentsService";
 import type { NewDocumentData } from "../../types";
@@ -41,6 +42,10 @@ class NewDocumentFormModalComponent extends Component {
   private async onSubmit(data: NewDocumentData, dialog: HTMLDialogElement) {
     dialog.close();
     await this.documentsService.addDocument(data);
+    toast.show({
+      type: "success",
+      message: "Document added successfully",
+    });
   }
 
   private createContainer() {
