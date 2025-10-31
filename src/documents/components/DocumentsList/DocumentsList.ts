@@ -40,6 +40,18 @@ class DocumentsListComponent extends Component {
 
     const container = this.createContainer();
 
+    if (this.documents.length === 0) {
+      const noDocumentsMessage = document.createElement("p");
+      noDocumentsMessage.className = styles.documentsList__noDocuments;
+      noDocumentsMessage.textContent =
+        "No documents available. You can add one!";
+      container.appendChild(noDocumentsMessage);
+
+      this.createNewDocumentFormAndButton(container);
+
+      return container;
+    }
+
     const header = this.createHeader();
 
     header.appendChild(this.createSortingComponent());
@@ -51,15 +63,7 @@ class DocumentsListComponent extends Component {
     container.appendChild(header);
     container.appendChild(this.createDocumentsComponent());
 
-    const buttonContainer = this.createButtonContainer();
-    container.appendChild(buttonContainer);
-
-    const newDocumentForm = this.createForm();
-    container.appendChild(newDocumentForm);
-
-    const newDocumentFormModal = newDocumentForm as HTMLDialogElement;
-
-    buttonContainer.appendChild(this.createButton(newDocumentFormModal));
+    this.createNewDocumentFormAndButton(container);
 
     return container;
   }
@@ -132,6 +136,18 @@ class DocumentsListComponent extends Component {
   private createForm() {
     const newDocumentForm = new NewDocumentFormModalComponent({});
     return newDocumentForm.getElement();
+  }
+
+  private createNewDocumentFormAndButton(container: HTMLElement) {
+    const buttonContainer = this.createButtonContainer();
+    container.appendChild(buttonContainer);
+
+    const newDocumentForm = this.createForm();
+    container.appendChild(newDocumentForm);
+
+    const newDocumentFormModal = newDocumentForm as HTMLDialogElement;
+
+    buttonContainer.appendChild(this.createButton(newDocumentFormModal));
   }
 }
 
