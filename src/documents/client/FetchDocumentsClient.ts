@@ -14,8 +14,14 @@ class FetchDocumentsClient extends BaseDocumentsClient {
     return documentsDto.map(this.mapDocumentDtoToViewModel);
   }
 
-  async saveDocument(_newDocumentData: NewDocumentData): Promise<Document> {
-    throw new Error("Method not implemented.");
+  async saveDocument(newDocumentData: NewDocumentData): Promise<Document> {
+    const document: Document = {
+      ...newDocumentData,
+      id: crypto.randomUUID(),
+      createdAt: new Date(),
+    };
+
+    return document;
   }
 }
 
