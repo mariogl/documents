@@ -5,6 +5,7 @@ export type Document = {
   attachments: string[];
   version: string;
   createdAt: Date;
+  relativeCreatedAt: string;
 };
 
-export type NewDocumentData = Omit<Document, "id">;
+export type NewDocumentData = Omit<Document, "id" | "relativeCreatedAt">;

@@ -8,7 +8,8 @@ class DocumentLayout {
   constructor(private slots: DocumentItemSlots) {}
 
   generateCardLayout(): HTMLElement {
-    const { name, version, contributors, attachments } = this.slots;
+    const { name, version, relativeCreatedAt, contributors, attachments } =
+      this.slots;
 
     const card = document.createElement("article");
     card.className = cardLayoutStyles.document;
@@ -19,6 +20,7 @@ class DocumentLayout {
 
     header.appendChild(name);
     header.appendChild(version);
+    header.appendChild(relativeCreatedAt);
 
     const contributorsSection = document.createElement("section");
     card.appendChild(contributorsSection);
@@ -48,7 +50,8 @@ class DocumentLayout {
   }
 
   generateRowLayout(): HTMLElement {
-    const { name, version, contributors, attachments } = this.slots;
+    const { name, version, relativeCreatedAt, contributors, attachments } =
+      this.slots;
 
     const row = document.createElement("tr");
     row.className = rowLayoutStyles.document;
@@ -56,8 +59,14 @@ class DocumentLayout {
     const nameCell = document.createElement("td");
     nameCell.className = rowLayoutStyles.document__cell;
 
-    nameCell.appendChild(name);
-    nameCell.appendChild(version);
+    const nameCellContainer = document.createElement("div");
+    nameCellContainer.className = rowLayoutStyles.document__nameCell;
+    nameCell.appendChild(nameCellContainer);
+
+    nameCellContainer.appendChild(name);
+    nameCellContainer.appendChild(version);
+    nameCellContainer.appendChild(relativeCreatedAt);
+
     row.appendChild(nameCell);
 
     const contributorsCell = document.createElement("td");

@@ -11,3 +11,9 @@
   padding: 24px;
   vertical-align: top;
 }
+
+.document__nameCell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

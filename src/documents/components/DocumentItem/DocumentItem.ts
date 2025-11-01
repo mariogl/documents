@@ -14,12 +14,14 @@ class DocumentItemComponent extends Component<DocumentItemComponentProps> {
   protected render(): Element {
     const documentName = this.createDocumentName();
     const documentVersion = this.createDocumentVersion();
+    const documentRelativeCreatedAt = this.createRelativeCreatedAt();
     const documentContributorsList = this.createDocumentContributorList();
     const documentAttachmentsList = this.createDocumentAttachmentsList();
 
     const layout = new DocumentLayout({
       name: documentName,
       version: documentVersion,
+      relativeCreatedAt: documentRelativeCreatedAt,
       contributors: documentContributorsList,
       attachments: documentAttachmentsList,
     });
@@ -45,6 +47,14 @@ class DocumentItemComponent extends Component<DocumentItemComponentProps> {
     documentVersion.textContent = `Version: ${this.props.document.version}`;
 
     return documentVersion;
+  }
+
+  private createRelativeCreatedAt() {
+    const documentCreatedAt = document.createElement("span");
+    documentCreatedAt.className = styles.document__subheading;
+    documentCreatedAt.textContent = `Created: ${this.props.document.relativeCreatedAt}`;
+
+    return documentCreatedAt;
   }
 
   private createDocumentContributorList() {

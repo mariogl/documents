@@ -1,3 +1,4 @@
+import { getRelativeDateString } from "../../shared/dates/helpers";
 import type { DocumentDto } from "../dto/types";
 import type { Document, NewDocumentData } from "../types";
 import BaseDocumentsClient from "./BaseDocumentsClient";
@@ -19,6 +20,7 @@ class FetchDocumentsClient extends BaseDocumentsClient {
       ...newDocumentData,
       id: crypto.randomUUID(),
       createdAt: new Date(),
+      relativeCreatedAt: getRelativeDateString(new Date()),
     };
 
     return document;

@@ -1,3 +1,4 @@
+import { getRelativeDateString } from "../../shared/dates/helpers";
 import type { DocumentDto } from "../dto/types";
 import type { Document, NewDocumentData } from "../types";
 import type { DocumentsClient } from "./types";
@@ -17,6 +18,7 @@ abstract class BaseDocumentsClient implements DocumentsClient {
       attachments: documentDto.Attachments,
       version: documentDto.Version,
       createdAt: new Date(documentDto.CreatedAt),
+      relativeCreatedAt: getRelativeDateString(new Date(documentDto.CreatedAt)),
     };
   }
 }

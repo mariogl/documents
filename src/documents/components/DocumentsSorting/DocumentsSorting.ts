@@ -32,7 +32,7 @@ class DocumentsSortingComponent extends Component<DocumentsSortingProps> {
     this.sortingOptions = [
       { value: "name", label: "Name" },
       { value: "version", label: "Version" },
-      { value: "createdAt", label: "Created At" },
+      { value: "createdAt", label: "Creation Date" },
     ];
   }
 
