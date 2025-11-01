@@ -15,17 +15,17 @@ class WebSocketNotificationsClient implements NotificationsClient {
 
     this.ws = new WebSocket(this.url);
 
-    this.ws.onmessage = (event) => {
+    this.ws.addEventListener("message", (event) => {
       const notification: NotificationDto = JSON.parse(event.data);
 
       this.notificationCallbacks.forEach((callback) =>
         callback(this.mapNotificationDtoToNotification(notification)),
       );
-    };
+    });
 
-    this.ws.onclose = () => {
+    this.ws.addEventListener("close", () => {
       setTimeout(() => this.connect(), 3000);
-    };
+    });
   }
 
   disconnect(): void {
@@ -36,10 +36,6 @@ class WebSocketNotificationsClient implements NotificationsClient {
   }
 
   onNotification(callback: (notification: Notification) => void): void {
-    if (!this.ws) {
-      throw new Error("WebSocket is not connected");
-    }
-
     this.notificationCallbacks.push(callback);
   }
 
