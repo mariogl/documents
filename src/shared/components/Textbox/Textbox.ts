@@ -2,12 +2,12 @@ import Component from "../Component";
 
 import styles from "./Textbox.module.css";
 
-type TextboxProps = Partial<HTMLInputElement> & {
+type TextboxComponentProps = Partial<HTMLInputElement> & {
   label: string;
   id: string;
 };
 
-class TextboxComponent extends Component<TextboxProps> {
+class TextboxComponent extends Component<TextboxComponentProps> {
   protected render(): Element {
     const { label, id, className, ...restProps } = this.props;
 

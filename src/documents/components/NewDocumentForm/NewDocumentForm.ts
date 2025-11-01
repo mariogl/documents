@@ -1,5 +1,6 @@
 import ButtonComponent from "../../../shared/components/Button/Button";
 import Component from "../../../shared/components/Component";
+import ListBoxComponent from "../../../shared/components/ListBox/ListBox";
 import TextboxComponent from "../../../shared/components/Textbox/Textbox";
 import type { NewDocumentData } from "../../types";
 
@@ -9,40 +10,49 @@ type NewDocumentFormProps = {
 
 class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
   private isFormValid: boolean = false;
+  private form: HTMLFormElement | null = null;
+  private contributors: string[] = [];
 
   protected render(): Element {
-    const form = this.createForm();
+    this.form = this.createForm();
 
-    form.appendChild(this.createTextbox("name", "Name:"));
-    form.appendChild(this.createTextbox("version", "Version:"));
-    form.appendChild(this.createSubmitButton());
+    this.form.appendChild(this.createTextbox("name", "Name:"));
+    this.form.appendChild(this.createTextbox("version", "Version:"));
+    this.form.appendChild(
+      this.createListBox("contributors", "Contributors (separated by commas):"),
+    );
+    this.form.appendChild(this.createSubmitButton());
 
-    form.addEventListener("submit", (event) => {
+    this.form.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      this.validateFormData(form);
+      this.validateFormData();
 
       if (!this.isFormValid) {
         return;
       }
 
       if (this.props.onSubmit) {
-        this.props.onSubmit(
-          this.mapFormDataToNewDocumentData(new FormData(form)),
-        );
+        const formData = new FormData(this.form!);
+
+        this.props.onSubmit(this.mapFormDataToNewDocumentData(formData));
       }
     });
 
-    return form;
+    return this.form;
   }
 
-  private validateFormData(form: HTMLFormElement): void {
-    const formData = new FormData(form);
+  private validateFormData(): void {
+    if (!this.form) {
+      return;
+    }
+
+    const formData = new FormData(this.form);
     const name = formData.get("name");
     const version = formData.get("version");
     this.isFormValid = true;
 
-    const nameField = form.querySelector("#name") as HTMLInputElement;
+    const nameField = this.form.querySelector("#name") as HTMLInputElement;
 
     if (typeof name !== "string" || name.trim() === "") {
       this.isFormValid = false;
@@ -51,7 +61,9 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
       this.clearFieldError(nameField);
     }
 
-    const versionField = form.querySelector("#version") as HTMLInputElement;
+    const versionField = this.form.querySelector(
+      "#version",
+    ) as HTMLInputElement;
 
     if (typeof version !== "string" || version.trim() === "") {
       this.isFormValid = false;
@@ -101,6 +113,19 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
     return textbox.getElement();
   }
 
+  private createListBox(id: string, label: string) {
+    const listBox = new ListBoxComponent({
+      id,
+      label,
+      required: true,
+      onChange: (values: string[]) => {
+        this.contributors = values;
+      },
+    });
+
+    return listBox.getElement();
+  }
+
   private createSubmitButton() {
     const button = new ButtonComponent({
       text: "Create Document",
@@ -115,7 +140,7 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
       name: formData.get("name") as string,
       version: formData.get("version") as string,
       createdAt: new Date(),
-      contributors: [],
+      contributors: this.contributors,
       attachments: [],
     };
   }
