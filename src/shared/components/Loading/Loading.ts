@@ -19,10 +19,17 @@ class LoadingComponent extends Component {
       return emptyElement;
     }
 
-    const loadingIndicator = document.createElement("div");
-    loadingIndicator.className = styles.loading;
-    loadingIndicator.textContent = "Loading...";
-    return loadingIndicator;
+    const container = document.createElement("div");
+    container.className = styles.loading;
+
+    const loader = document.createElement("div");
+    loader.className = styles.loader;
+    loader.role = "alert";
+    loader.setAttribute("aria-label", "Loading");
+
+    container.appendChild(loader);
+
+    return container;
   }
 }
 
