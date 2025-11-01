@@ -4,7 +4,7 @@ import IconComponent from "../../../shared/components/Icon/Icon";
 import IconButtonComponent from "../../../shared/components/IconButton/IconButton";
 import type { ComponentProps } from "../../../shared/components/types";
 import { toast } from "../../../shared/toast/ToastService";
-import { documentsServiceContext } from "../../context/DocumentsContext";
+import { documentsServiceContext } from "../../context/documentsServiceContext";
 import type DocumentsService from "../../services/DocumentsService";
 import type { NewDocumentData } from "../../types";
 import NewDocumentFormComponent from "../NewDocumentForm/NewDocumentForm";

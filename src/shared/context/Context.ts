@@ -1,6 +1,4 @@
-import type DocumentsService from "../services/DocumentsService";
-
-class DocumentsContext<ValueType> {
+class Context<ValueType> {
   private value: ValueType | null = null;
 
   provide(value: ValueType): void {
@@ -9,7 +7,7 @@ class DocumentsContext<ValueType> {
 
   consume(): ValueType {
     if (this.value === null) {
-      throw new Error("DocumentsContext: No value provided");
+      throw new Error("Context: No value provided");
     }
 
     return this.value;
@@ -19,4 +17,5 @@ class DocumentsContext<ValueType> {
     this.value = null;
   }
 }
-export const documentsServiceContext = new DocumentsContext<DocumentsService>();
+
+export default Context;

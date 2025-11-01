@@ -1,5 +1,5 @@
 import FetchDocumentsClient from "./documents/client/FetchDocumentsClient";
-import { documentsServiceContext } from "./documents/context/DocumentsContext";
+import { documentsServiceContext } from "./documents/context/documentsServiceContext";
 import DocumentsServiceFactory from "./documents/services/DocumentsServiceFactory";
 import AppComponent from "./shared/components/App/App";
 

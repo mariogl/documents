@@ -1,6 +1,6 @@
 import Component from "../../../shared/components/Component";
 import DropdownComponent from "../../../shared/components/Dropdown/Dropdown";
-import { documentsServiceContext } from "../../context/DocumentsContext";
+import { documentsServiceContext } from "../../context/documentsServiceContext";
 import type DocumentsService from "../../services/DocumentsService";
 import type { Document } from "../../types";
 

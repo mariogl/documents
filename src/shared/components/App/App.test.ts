@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/dom";
 
 import FakeDocumentsClient from "../../../documents/client/FakeDocumentsClient";
-import { documentsServiceContext } from "../../../documents/context/DocumentsContext";
+import { documentsServiceContext } from "../../../documents/context/documentsServiceContext";
 import {
   marketingPlanDocumentDtoFixture,
   q1ReportDocumentDtoFixture,

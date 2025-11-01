@@ -1,5 +1,5 @@
 import DocumentsListComponent from "../../../documents/components/DocumentsList/DocumentsList";
-import { documentsServiceContext } from "../../../documents/context/DocumentsContext";
+import { documentsServiceContext } from "../../../documents/context/documentsServiceContext";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
 import MainHeaderComponent from "../MainHeader/MainHeader";
@@ -20,9 +20,26 @@ class AppComponent extends Component {
   }
 
   protected render(): Element {
+    const container = this.createContainer();
+
+    container.appendChild(this.createMainHeader());
+
+    const main = this.createMain();
+
+    main.appendChild(this.createDocumentsList());
+
+    container.appendChild(main);
+
+    return container;
+  }
+
+  private createContainer() {
     const container = document.createElement("div");
     container.classList.add(styles.appContainer);
+    return container;
+  }
 
+  private createMainHeader() {
     const appTitle = new HeadingComponent({
       level: 1,
       text: "Documents",
@@ -32,17 +49,16 @@ class AppComponent extends Component {
     const mainHeader = new MainHeaderComponent({
       children: appTitle.getElement(),
     });
-    container.appendChild(mainHeader.getElement());
 
-    const main = document.createElement("main");
+    return mainHeader.getElement();
+  }
 
-    const documentsList = new DocumentsListComponent({});
+  private createMain() {
+    return document.createElement("main");
+  }
 
-    main.appendChild(documentsList.getElement());
-
-    container.appendChild(main);
-
-    return container;
+  private createDocumentsList() {
+    return new DocumentsListComponent({}).getElement();
   }
 }
 
