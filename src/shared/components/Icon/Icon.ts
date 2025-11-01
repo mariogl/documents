@@ -1,4 +1,5 @@
 import Component from "../Component";
+import type { ComponentProps } from "../types";
 
 const icons = {
   grid: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 510.87">
@@ -12,6 +13,10 @@ const icons = {
   </svg>`,
   success: `<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>`,
   error: `'<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>`,
+  notifications: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5835 7.41667C4.5835 3.32056 7.90405 0 12.0002 0C16.0963 0 19.4168 3.32056 19.4168 7.41667V8.33334C19.4168 10.5339 19.7156 12.4847 20.171 13.8507C20.4004 14.539 20.6515 15.0238 20.8818 15.316C21.0523 15.5324 21.1541 15.5761 21.1774 15.5834C21.7248 15.5891 22.1668 16.0346 22.1668 16.5833V16.7917C22.1668 17.344 21.7191 17.7917 21.1668 17.7917H2.8335C2.28121 17.7917 1.8335 17.344 1.8335 16.7917V16.5833C1.8335 16.0346 2.27551 15.5891 2.82292 15.5834C2.84626 15.5761 2.948 15.5324 3.11851 15.316C3.34881 15.0238 3.59994 14.539 3.82936 13.8507C4.2847 12.4847 4.5835 10.5339 4.5835 8.33334V7.41667ZM2.81774 15.5847C2.81773 15.5846 2.81863 15.5844 2.82044 15.5841L2.81886 15.5845C2.81812 15.5847 2.81774 15.5847 2.81774 15.5847Z" fill="#000000"/>
+    <path d="M9.25013 19.5C8.87258 19.5 8.52722 19.7126 8.35723 20.0497C8.18723 20.3869 8.2216 20.791 8.44606 21.0945C9.27818 22.2199 10.5352 23 12.0001 23C13.465 23 14.7221 22.2199 15.5542 21.0945C15.7787 20.791 15.813 20.3869 15.643 20.0497C15.473 19.7126 15.1277 19.5 14.7501 19.5H9.25013Z" fill="#000000"/>
+  </svg>`,
 } as const;
 
 type IconName = keyof typeof icons;
@@ -21,9 +26,13 @@ type IconComponentProps = {
   size?: number;
 };
 
-class IconComponent extends Component<IconComponentProps> {
-  constructor(props: IconComponentProps) {
-    super({ name: props.name, size: props.size ?? 24 });
+class IconComponent extends Component<ComponentProps<IconComponentProps>> {
+  constructor(props: ComponentProps<IconComponentProps>) {
+    super({
+      name: props.name,
+      size: props.size ?? 24,
+      className: props.className,
+    });
   }
 
   protected render(): Element {
@@ -38,6 +47,10 @@ class IconComponent extends Component<IconComponentProps> {
 
     svg.setAttribute("width", this.props.size!.toString());
     svg.setAttribute("height", this.props.size!.toString());
+
+    if (this.props.className) {
+      svg.setAttribute("class", this.props.className);
+    }
 
     return svg;
   }

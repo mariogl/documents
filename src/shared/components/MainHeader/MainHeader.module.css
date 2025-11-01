@@ -1,5 +1,12 @@
 .mainHeader {
+  margin-top: 40px;
   min-height: 4rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  @media (width >= 768px) {
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
 }

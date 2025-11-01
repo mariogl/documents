@@ -1,5 +1,6 @@
 import DocumentsListComponent from "../../../documents/components/DocumentsList/DocumentsList";
 import { documentsServiceContext } from "../../../documents/context/documentsServiceContext";
+import NotificationsComponent from "../../../notifications/components/Notifications/Notifications";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
 import LoadingComponent from "../Loading/Loading";
@@ -13,9 +14,6 @@ class AppComponent extends Component {
     super(props);
 
     const documentsService = documentsServiceContext.consume();
-    documentsService.subscribe(() => {
-      this.rerender();
-    });
 
     documentsService.loadDocuments();
   }
@@ -30,6 +28,8 @@ class AppComponent extends Component {
     main.appendChild(this.createDocumentsList());
 
     container.appendChild(main);
+
+    container.appendChild(this.createNotificationsBox());
 
     container.appendChild(this.createLoading());
 
@@ -62,6 +62,12 @@ class AppComponent extends Component {
 
   private createDocumentsList() {
     return new DocumentsListComponent({}).getElement();
+  }
+
+  private createNotificationsBox() {
+    const notificationsBox = new NotificationsComponent({});
+
+    return notificationsBox.getElement();
   }
 
   private createLoading() {

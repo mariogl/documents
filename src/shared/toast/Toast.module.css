@@ -10,6 +10,7 @@
   padding: 16px 60px 16px 16px;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 2000;
   opacity: 1;
   transform: translateX(0);
   transition: all 0.3s ease;
