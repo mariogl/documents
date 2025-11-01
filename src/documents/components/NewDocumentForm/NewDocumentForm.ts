@@ -12,6 +12,7 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
   private isFormValid: boolean = false;
   private form: HTMLFormElement | null = null;
   private contributors: string[] = [];
+  private attachments: string[] = [];
 
   protected render(): Element {
     this.form = this.createForm();
@@ -19,7 +20,22 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
     this.form.appendChild(this.createTextbox("name", "Name:"));
     this.form.appendChild(this.createTextbox("version", "Version:"));
     this.form.appendChild(
-      this.createListBox("contributors", "Contributors (separated by commas):"),
+      this.createListBox(
+        "contributors",
+        "Contributors (separated by commas):",
+        (values: string[]) => {
+          this.contributors = values;
+        },
+      ),
+    );
+    this.form.appendChild(
+      this.createListBox(
+        "attachments",
+        "Attachments (separated by commas):",
+        (values: string[]) => {
+          this.attachments = values;
+        },
+      ),
     );
     this.form.appendChild(this.createSubmitButton());
 
@@ -113,14 +129,16 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
     return textbox.getElement();
   }
 
-  private createListBox(id: string, label: string) {
+  private createListBox(
+    id: string,
+    label: string,
+    onChange: (values: string[]) => void,
+  ) {
     const listBox = new ListBoxComponent({
       id,
       label,
       required: true,
-      onChange: (values: string[]) => {
-        this.contributors = values;
-      },
+      onChange,
     });
 
     return listBox.getElement();
@@ -141,7 +159,7 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
       version: formData.get("version") as string,
       createdAt: new Date(),
       contributors: this.contributors,
-      attachments: [],
+      attachments: this.attachments,
     };
   }
 }
