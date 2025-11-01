@@ -1,3 +1,4 @@
+import { uiStore } from "../../shared/store/UiStore";
 import { toast } from "../../shared/toast/ToastService";
 import type { DocumentsClient } from "../client/types";
 import type { DocumentSortableProperties } from "../components/DocumentsSorting/DocumentsSorting";
@@ -12,7 +13,9 @@ class DocumentsService {
 
   async loadDocuments(): Promise<void> {
     try {
+      uiStore.startLoading();
       const documents = await this.documentsClient.getDocuments();
+      uiStore.stopLoading();
 
       this.documentsStore.setDocuments(documents);
     } catch {
@@ -20,6 +23,7 @@ class DocumentsService {
         type: "error",
         message: "Failed to load documents. Please try again later.",
       });
+      uiStore.stopLoading();
     }
   }
 
@@ -28,7 +32,9 @@ class DocumentsService {
   }
 
   async addDocument(newDocumentData: NewDocumentData): Promise<void> {
+    uiStore.startLoading();
     const document = await this.documentsClient.saveDocument(newDocumentData);
+    uiStore.stopLoading();
 
     this.documentsStore.addDocument(document);
   }

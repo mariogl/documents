@@ -2,6 +2,7 @@ import DocumentsListComponent from "../../../documents/components/DocumentsList/
 import { documentsServiceContext } from "../../../documents/context/documentsServiceContext";
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";
+import LoadingComponent from "../Loading/Loading";
 import MainHeaderComponent from "../MainHeader/MainHeader";
 import type { ComponentProps } from "../types";
 
@@ -29,6 +30,8 @@ class AppComponent extends Component {
     main.appendChild(this.createDocumentsList());
 
     container.appendChild(main);
+
+    container.appendChild(this.createLoading());
 
     return container;
   }
@@ -59,6 +62,10 @@ class AppComponent extends Component {
 
   private createDocumentsList() {
     return new DocumentsListComponent({}).getElement();
+  }
+
+  private createLoading() {
+    return new LoadingComponent({}).getElement();
   }
 }
 
