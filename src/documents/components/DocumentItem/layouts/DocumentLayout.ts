@@ -1,3 +1,4 @@
+import HeadingComponent from "../../../../shared/components/Heading/Heading";
 import type { DocumentItemSlots } from "../types";
 
 import cardLayoutStyles from "./DocumentCard.module.css";
@@ -22,11 +23,25 @@ class DocumentLayout {
     const contributorsSection = document.createElement("section");
     card.appendChild(contributorsSection);
 
+    const contributorsHeading = new HeadingComponent({
+      text: "Contributors",
+      level: 3,
+      className: cardLayoutStyles.document__subheading,
+    });
+
+    contributorsSection.appendChild(contributorsHeading.getElement());
     contributorsSection.appendChild(contributors);
 
     const attachmentsSection = document.createElement("section");
     card.appendChild(attachmentsSection);
 
+    const attachmentsHeading = new HeadingComponent({
+      text: "Attachments",
+      level: 3,
+      className: cardLayoutStyles.document__subheading,
+    });
+
+    attachmentsSection.appendChild(attachmentsHeading.getElement());
     attachmentsSection.appendChild(attachments);
 
     return card;
