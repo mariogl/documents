@@ -9,10 +9,19 @@ class FetchDocumentsClient extends BaseDocumentsClient {
   }
 
   async getDocuments(): Promise<Document[]> {
-    const response = await fetch(`${this.baseUrl}/documents`);
-    const documentsDto: DocumentDto[] = await response.json();
+    try {
+      const response = await fetch(`${this.baseUrl}/documents`);
 
-    return documentsDto.map(this.mapDocumentDtoToViewModel);
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      const documentsDto: DocumentDto[] = await response.json();
+
+      return documentsDto.map(this.mapDocumentDtoToViewModel);
+    } catch (error) {
+      throw new Error("Failed to fetch documents: " + (error as Error).message);
+    }
   }
 
   async saveDocument(newDocumentData: NewDocumentData): Promise<Document> {

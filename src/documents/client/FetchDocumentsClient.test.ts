@@ -1,3 +1,6 @@
+import { http, HttpResponse } from "msw";
+
+import { server } from "../../shared/testing/mswServer";
 import { documentsDtoFixture } from "../fixtures/documentsFixtures";
 import FetchDocumentsClient from "./FetchDocumentsClient";
 
@@ -14,5 +17,29 @@ describe("FetchDocumentsClient", () => {
       expect(document.name).toBe(expectedDocumentDto.Title);
       expect(document.version).toBe(expectedDocumentDto.Version);
     });
+  });
+
+  it("should throw an error when the API request fails", async () => {
+    const invalidApiBaseUrl = "invalid-api-url";
+    const client = new FetchDocumentsClient(invalidApiBaseUrl);
+
+    await expect(client.getDocuments()).rejects.toThrow(
+      "Failed to fetch documents",
+    );
+  });
+
+  it("should throw an error when the API returns a non-ok response", async () => {
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+    const client = new FetchDocumentsClient(apiBaseUrl);
+
+    server.use(
+      http.get(`${apiBaseUrl}/documents`, () =>
+        HttpResponse.json({}, { status: 500 }),
+      ),
+    );
+
+    await expect(client.getDocuments()).rejects.toThrow(
+      "Failed to fetch documents",
+    );
   });
 });

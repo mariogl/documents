@@ -1,4 +1,4 @@
-import type Component from "./shared/components/Component";
+import type Component from "../components/Component";
 
 export const render = (ui: Component) => {
   document.body.appendChild(ui.getElement());

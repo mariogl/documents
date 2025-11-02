@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/dom";
 
-import { render } from "../../../testUtils";
+import { render } from "../../../shared/testing/testUtils";
 import {
   coverLetterDocumentFixture,
   cvDocumentFixture,

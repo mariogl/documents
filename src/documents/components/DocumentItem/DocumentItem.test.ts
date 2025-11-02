@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/dom";
 
-import { render } from "../../../testUtils";
+import { render } from "../../../shared/testing/testUtils";
 import DocumentsFixtureFactory from "../../fixtures/DocumentsFixtureFactory";
 import type { Document } from "../../types";
 import DocumentItemComponent from "./DocumentItem";

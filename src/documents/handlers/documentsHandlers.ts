@@ -5,7 +5,7 @@ import { documentsDtoFixture } from "../fixtures/documentsFixtures";
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
-export const handlers = [
+export const documentsHandlers = [
   http.get(`${apiBaseUrl}/documents`, () => {
     return HttpResponse.json<DocumentDto[]>(documentsDtoFixture);
   }),

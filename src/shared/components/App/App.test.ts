@@ -10,7 +10,7 @@ import {
 import DocumentsServiceFactory from "../../../documents/services/DocumentsServiceFactory";
 import { notificationsServiceContext } from "../../../notifications/context/notificationsServiceContext";
 import type NotificationsService from "../../../notifications/services/NotificationsService";
-import { render } from "../../../testUtils";
+import { render } from "../../testing/testUtils";
 import AppComponent from "./App";
 
 describe("App Component", () => {
