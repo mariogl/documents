@@ -8,12 +8,23 @@ import {
   userResearchDocumentDtoFixture,
 } from "../../../documents/fixtures/documentsFixtures";
 import DocumentsServiceFactory from "../../../documents/services/DocumentsServiceFactory";
+import { notificationsServiceContext } from "../../../notifications/context/notificationsServiceContext";
+import type NotificationsService from "../../../notifications/services/NotificationsService";
 import { render } from "../../../testUtils";
 import AppComponent from "./App";
+
 describe("App Component", () => {
   it("should render the documents list", async () => {
     documentsServiceContext.provide(
       DocumentsServiceFactory.createForTesting(new FakeDocumentsClient()),
+    );
+
+    const dummyNotificationsService = {
+      subscribe: () => {},
+    } as Pick<NotificationsService, "subscribe">;
+
+    notificationsServiceContext.provide(
+      dummyNotificationsService as NotificationsService,
     );
 
     const app = new AppComponent({});
