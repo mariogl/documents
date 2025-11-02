@@ -1,6 +1,6 @@
 import type { Document } from "@documents/domain/types";
 import type { LayoutType } from "@documents/presentation/components/DocumentItem/types";
-import Component from "@shared/components/Component";
+import Component from "@shared/presentation/components/Component";
 
 import DocumentsLayout from "./layouts/DocumentsLayout";
 

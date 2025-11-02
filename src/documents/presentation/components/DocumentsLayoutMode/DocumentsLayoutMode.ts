@@ -1,6 +1,6 @@
-import Component from "@shared/components/Component";
-import IconComponent from "@shared/components/Icon/Icon";
-import IconButtonComponent from "@shared/components/IconButton/IconButton";
+import Component from "@shared/presentation/components/Component";
+import IconComponent from "@shared/presentation/components/Icon/Icon";
+import IconButtonComponent from "@shared/presentation/components/IconButton/IconButton";
 
 import type { LayoutType } from "../DocumentItem/types";
 

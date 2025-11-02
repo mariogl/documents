@@ -1,4 +1,4 @@
-import Context from "@shared/context/Context";
+import Context from "@shared/application/context/Context";
 
 import Store from "./Store";
 

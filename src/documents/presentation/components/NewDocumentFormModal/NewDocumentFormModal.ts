@@ -1,12 +1,12 @@
 import { documentsServiceContext } from "@documents/application/context/documentsServiceContext";
 import type DocumentsService from "@documents/application/services/DocumentsService";
 import type { NewDocumentData } from "@documents/domain/types";
-import Component from "@shared/components/Component";
-import HeadingComponent from "@shared/components/Heading/Heading";
-import IconComponent from "@shared/components/Icon/Icon";
-import IconButtonComponent from "@shared/components/IconButton/IconButton";
-import type { ComponentProps } from "@shared/components/types";
-import { toast } from "@shared/toast/ToastService";
+import Component from "@shared/presentation/components/Component";
+import HeadingComponent from "@shared/presentation/components/Heading/Heading";
+import IconComponent from "@shared/presentation/components/Icon/Icon";
+import IconButtonComponent from "@shared/presentation/components/IconButton/IconButton";
+import { toast } from "@shared/presentation/components/Toast/ToastService";
+import type { ComponentProps } from "@shared/presentation/components/types";
 
 import NewDocumentFormComponent from "../NewDocumentForm/NewDocumentForm";
 

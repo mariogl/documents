@@ -1,4 +1,4 @@
-import HeadingComponent from "@shared/components/Heading/Heading";
+import HeadingComponent from "@shared/presentation/components/Heading/Heading";
 
 import type { DocumentItemSlots } from "../types";
 

@@ -1,11 +1,11 @@
 import { documentsServiceContext } from "@documents/application/context/documentsServiceContext";
 import type DocumentsService from "@documents/application/services/DocumentsService";
 import type { Document } from "@documents/domain/types";
-import ButtonComponent from "@shared/components/Button/Button";
-import Component from "@shared/components/Component";
-import type { ComponentProps } from "@shared/components/types";
 import { MOBILE_BREAKPOINT } from "@shared/config/config";
-import subscribeToMediaQuery from "@shared/mediaQuery/mediaQuery";
+import ButtonComponent from "@shared/presentation/components/Button/Button";
+import Component from "@shared/presentation/components/Component";
+import type { ComponentProps } from "@shared/presentation/components/types";
+import subscribeToMediaQuery from "@shared/presentation/mediaQuery/mediaQuery";
 
 import type { LayoutType } from "../DocumentItem/types";
 import DocumentsComponent from "../Documents/Documents";

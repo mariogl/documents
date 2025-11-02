@@ -2,9 +2,9 @@ import { notificationsServiceContext } from "@notifications/application/context/
 import type NotificationsService from "@notifications/application/services/NotificationsService";
 import type { Notification } from "@notifications/domain/types";
 
-import Component from "@shared/components/Component";
-import IconComponent from "@shared/components/Icon/Icon";
-import type { ComponentProps } from "@shared/components/types";
+import Component from "@shared/presentation/components/Component";
+import IconComponent from "@shared/presentation/components/Icon/Icon";
+import type { ComponentProps } from "@shared/presentation/components/types";
 
 import styles from "./Notifications.module.css";
 

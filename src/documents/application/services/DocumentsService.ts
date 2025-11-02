@@ -2,8 +2,8 @@ import type DocumentsStore from "@documents/application/store/DocumentsStore";
 import type { Document, NewDocumentData } from "@documents/domain/types";
 import type { DocumentsClient } from "@documents/infrastructure/client/types";
 import type { DocumentSortableProperties } from "@documents/presentation/components/DocumentsSorting/DocumentsSorting";
-import { uiStore } from "@shared/store/UiStore";
-import { toast } from "@shared/toast/ToastService";
+import { uiStore } from "@shared/application/store/UiStore";
+import { toast } from "@shared/presentation/components/Toast/ToastService";
 
 class DocumentsService {
   constructor(

@@ -6,7 +6,7 @@ import WebSocketNotificationsClient from "@notifications/infrastructure/client/W
 import { documentsServiceContext } from "@documents/application/context/documentsServiceContext";
 import DocumentsServiceFactory from "@documents/application/services/DocumentsServiceFactory";
 import FetchDocumentsClient from "@documents/infrastructure/client/FetchDocumentsClient";
-import AppComponent from "@shared/components/App/App";
+import AppComponent from "@shared/presentation/components/App/App";
 
 import "@shared/styles/index.css";
 

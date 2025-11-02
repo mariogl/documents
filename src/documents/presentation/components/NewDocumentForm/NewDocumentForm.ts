@@ -1,8 +1,8 @@
 import type { NewDocumentData } from "@documents/domain/types";
-import ButtonComponent from "@shared/components/Button/Button";
-import Component from "@shared/components/Component";
-import ListBoxComponent from "@shared/components/ListBox/ListBox";
-import TextboxComponent from "@shared/components/Textbox/Textbox";
+import ButtonComponent from "@shared/presentation/components/Button/Button";
+import Component from "@shared/presentation/components/Component";
+import ListBoxComponent from "@shared/presentation/components/ListBox/ListBox";
+import TextboxComponent from "@shared/presentation/components/Textbox/Textbox";
 
 type NewDocumentFormProps = {
   onSubmit?: (data: NewDocumentData) => void;

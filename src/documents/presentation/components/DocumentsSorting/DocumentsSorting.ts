@@ -1,8 +1,8 @@
 import { documentsServiceContext } from "@documents/application/context/documentsServiceContext";
 import type DocumentsService from "@documents/application/services/DocumentsService";
 import type { Document } from "@documents/domain/types";
-import Component from "@shared/components/Component";
-import DropdownComponent from "@shared/components/Dropdown/Dropdown";
+import Component from "@shared/presentation/components/Component";
+import DropdownComponent from "@shared/presentation/components/Dropdown/Dropdown";
 
 import styles from "./DocumentsSorting.module.css";
 
