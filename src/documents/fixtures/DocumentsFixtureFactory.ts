@@ -1,3 +1,4 @@
+import { getRelativeDateString } from "../../shared/dates/helpers";
 import type { DocumentDto } from "../dto/types";
 import type { Document } from "../types";
 
@@ -10,6 +11,7 @@ class DocumentsFixtureFactory {
       attachments: ["file1", "file2", "file3"],
       version: "1.0.0",
       createdAt: new Date(),
+      relativeCreatedAt: getRelativeDateString(new Date()),
       ...overrides,
     };
   }

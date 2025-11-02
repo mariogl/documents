@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/dom";
 
-import FakeDocumentsClient from "../../../documents/client/FakeDocumentsClient";
+import FetchDocumentsClient from "../../../documents/client/FetchDocumentsClient";
 import { documentsServiceContext } from "../../../documents/context/documentsServiceContext";
 import {
   marketingPlanDocumentDtoFixture,
@@ -15,8 +15,10 @@ import AppComponent from "./App";
 
 describe("App Component", () => {
   it("should render the documents list", async () => {
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
     documentsServiceContext.provide(
-      DocumentsServiceFactory.createForTesting(new FakeDocumentsClient()),
+      DocumentsServiceFactory.create(new FetchDocumentsClient(apiBaseUrl)),
     );
 
     const dummyNotificationsService = {

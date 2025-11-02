@@ -1,20 +1,15 @@
 import { screen } from "@testing-library/dom";
 
 import { render } from "../../../testUtils";
-import DocumentsFixtureFactory from "../../fixtures/DocumentsFixtureFactory";
+import {
+  coverLetterDocumentFixture,
+  cvDocumentFixture,
+} from "../../fixtures/documentsFixtures";
 import type { Document } from "../../types";
 import DocumentsComponent from "./Documents";
 
 describe("Documents Component", () => {
   it("should render the list of documents", () => {
-    const cvDocumentFixture: Document =
-      DocumentsFixtureFactory.createDocumentFixture({
-        name: "CV - Danielle Rossi",
-      });
-    const coverLetterDocumentFixture: Document =
-      DocumentsFixtureFactory.createDocumentFixture({
-        name: "Cover Letter - Danielle Rossi",
-      });
     const documentFixtures: Document[] = [
       cvDocumentFixture,
       coverLetterDocumentFixture,
