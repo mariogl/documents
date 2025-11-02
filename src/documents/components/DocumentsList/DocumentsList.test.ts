@@ -14,7 +14,7 @@ import DocumentsListComponent from "./DocumentsList";
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 describe("DocumentsList Component", () => {
-  it("should render no documents message when there are no documents", async () => {
+  it("should render document names", async () => {
     const documentsStore = new DocumentsStore();
     documentsStore.setDocuments([
       cvDocumentFixture,
@@ -41,5 +41,26 @@ describe("DocumentsList Component", () => {
 
     expect(cvDocumentName).toBeInTheDocument();
     expect(coverLetterDocumentName).toBeInTheDocument();
+  });
+
+  it("should render no documents message when there are no documents", async () => {
+    const documentsStore = new DocumentsStore();
+
+    documentsServiceContext.provide(
+      DocumentsServiceFactory.createForTesting(
+        new FetchDocumentsClient(apiBaseUrl),
+        documentsStore,
+      ),
+    );
+
+    const documentsList = new DocumentsListComponent({});
+
+    render(documentsList);
+
+    const noDocumentsMessage = await screen.findByText(
+      /no documents available/i,
+    );
+
+    expect(noDocumentsMessage).toBeInTheDocument();
   });
 });
