@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 0 10px var(--padding-containers);
 
-  @media (width >= 768px) {
+  @media (width >= 650px) {
     padding-left: var(--padding-containers);
     padding-right: var(--padding-containers);
   }

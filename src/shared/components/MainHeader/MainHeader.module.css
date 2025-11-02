@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
 
-  @media (width >= 768px) {
+  @media (width >= 590px) {
     justify-content: flex-start;
     margin-top: 20px;
   }

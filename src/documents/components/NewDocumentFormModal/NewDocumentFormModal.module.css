@@ -40,15 +40,24 @@
 .modal__container {
   height: 100%;
   position: relative;
-  padding: var(--padding-containers);
+  padding: var(--padding-containers) 16px;
+
+  @media (width >= 590px) {
+    padding: var(--padding-containers);
+  }
 }
 
 .modal__closeButton {
   position: absolute;
-  top: var(--padding-containers);
-  right: var(--padding-containers);
+  top: 12px;
+  right: 12px;
   border-radius: 50%;
   border: 1px solid var(--color-border-dark);
+
+  @media (width >= 590px) {
+    top: var(--padding-containers);
+    right: var(--padding-containers);
+  }
 }
 
 .modal__title {

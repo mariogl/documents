@@ -125,6 +125,7 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
       label,
       type: "text",
       required: true,
+      className: "form__control",
     });
     return textbox.getElement();
   }
