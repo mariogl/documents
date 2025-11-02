@@ -1,4 +1,5 @@
 import { screen } from "@testing-library/dom";
+import userEvent from "@testing-library/user-event";
 
 import { render } from "../../../testUtils";
 import FetchDocumentsClient from "../../client/FetchDocumentsClient";
@@ -12,6 +13,7 @@ import DocumentsStore from "../../store/DocumentsStore";
 import DocumentsListComponent from "./DocumentsList";
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const user = userEvent.setup();
 
 describe("DocumentsList Component", () => {
   it("should render document names", async () => {
@@ -62,5 +64,45 @@ describe("DocumentsList Component", () => {
     );
 
     expect(noDocumentsMessage).toBeInTheDocument();
+  });
+
+  it("should allow adding a new document", async () => {
+    const newTestDocumentName = "New Test Document";
+    const documentsStore = new DocumentsStore();
+
+    documentsServiceContext.provide(
+      DocumentsServiceFactory.createForTesting(
+        new FetchDocumentsClient(apiBaseUrl),
+        documentsStore,
+      ),
+    );
+
+    const documentsList = new DocumentsListComponent({});
+
+    render(documentsList);
+
+    const addDocumentButton = await screen.findByRole("button", {
+      name: /add document/i,
+    });
+
+    await user.click(addDocumentButton);
+
+    const newDocumentNameInput = await screen.findByLabelText(/name/i);
+    await user.type(newDocumentNameInput, newTestDocumentName);
+
+    const newDocumentVersionInput = await screen.findByLabelText(/version/i);
+    await user.type(newDocumentVersionInput, "1.13.4");
+
+    const submitButton = await screen.findByRole("button", {
+      name: /create document/i,
+    });
+
+    await user.click(submitButton);
+
+    const newDocumentName = await screen.findByRole("heading", {
+      name: newTestDocumentName,
+    });
+
+    expect(newDocumentName).toBeInTheDocument();
   });
 });

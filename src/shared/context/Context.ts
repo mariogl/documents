@@ -12,10 +12,6 @@ class Context<ValueType> {
 
     return this.value;
   }
-
-  reset(): void {
-    this.value = null;
-  }
 }
 
 export default Context;
