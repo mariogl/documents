@@ -1,4 +1,5 @@
 import Context from "../context/Context";
+import Store from "./Store";
 
 export const uiContext = new Context<{
   isLoading: boolean;
@@ -6,9 +7,8 @@ export const uiContext = new Context<{
   stopLoading: () => void;
 }>();
 
-class UiStore {
+class UiStore extends Store {
   private isLoading = false;
-  private listeners = new Set<() => void>();
 
   startLoading(): void {
     this.isLoading = true;
@@ -22,14 +22,6 @@ class UiStore {
 
   getIsLoading(): boolean {
     return this.isLoading;
-  }
-
-  subscribe(listener: () => void) {
-    this.listeners.add(listener);
-  }
-
-  notifyListeners() {
-    this.listeners.forEach((listener) => listener());
   }
 }
 

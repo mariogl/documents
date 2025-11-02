@@ -1,8 +1,8 @@
+import Store from "../../shared/store/Store";
 import type { Notification } from "../types";
 
-class NotificationsStore {
+class NotificationsStore extends Store {
   private notifications: Notification[] = [];
-  private listeners = new Set<() => void>();
 
   addNotification(notification: Notification): void {
     this.notifications.push(notification);
@@ -11,14 +11,6 @@ class NotificationsStore {
 
   getNotifications(): Notification[] {
     return [...this.notifications];
-  }
-
-  subscribe(listener: () => void) {
-    this.listeners.add(listener);
-  }
-
-  notifyListeners() {
-    this.listeners.forEach((listener) => listener());
   }
 }
 

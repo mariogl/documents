@@ -1,11 +1,11 @@
+import Store from "../../shared/store/Store";
 import type { DocumentSortableProperties } from "../components/DocumentsSorting/DocumentsSorting";
 import DocumentsSorterFactory from "../sorters/DocumentsSorterFactory";
 import type { Document } from "../types";
 
-class DocumentsStore {
+class DocumentsStore extends Store {
   private documents: Document[] = [];
   private sortBy: DocumentSortableProperties = "name";
-  private listeners = new Set<() => void>();
 
   setDocuments(documents: Document[]): void {
     this.documents = [...documents];
@@ -29,14 +29,6 @@ class DocumentsStore {
   setSortBy(sortBy: DocumentSortableProperties): void {
     this.sortBy = sortBy;
     this.notifyListeners();
-  }
-
-  subscribe(listener: () => void) {
-    this.listeners.add(listener);
-  }
-
-  notifyListeners() {
-    this.listeners.forEach((listener) => listener());
   }
 }
 
