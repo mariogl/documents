@@ -6,10 +6,6 @@
   flex-direction: column;
   align-items: stretch;
   gap: 10px;
-
-  @media (width >= 590px) {
-    align-items: flex-start;
-  }
 }
 
 .form__group {
@@ -22,10 +18,6 @@
   flex-direction: column;
   align-items: stretch;
   gap: 2px;
-
-  @media (width >= 590px) {
-    align-items: flex-start;
-  }
 
   .form__label {
     margin-bottom: 4px;
