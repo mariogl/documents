@@ -1,4 +1,4 @@
-import type { Document } from "@documents/types";
+import type { Document } from "@documents/domain/types";
 
 import DocumentsFixtureFactory from "./DocumentsFixtureFactory";
 

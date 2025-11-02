@@ -1,7 +1,7 @@
 import NotificationsComponent from "@notifications/components/Notifications/Notifications";
 
-import DocumentsListComponent from "@documents/components/DocumentsList/DocumentsList";
-import { documentsServiceContext } from "@documents/context/documentsServiceContext";
+import { documentsServiceContext } from "@documents/application/context/documentsServiceContext";
+import DocumentsListComponent from "@documents/presentation/components/DocumentsList/DocumentsList";
 
 import Component from "../Component";
 import HeadingComponent from "../Heading/Heading";

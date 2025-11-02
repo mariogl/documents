@@ -2,15 +2,15 @@ import { notificationsServiceContext } from "@notifications/context/notification
 import type NotificationsService from "@notifications/services/NotificationsService";
 import { screen } from "@testing-library/dom";
 
-import FetchDocumentsClient from "@documents/client/FetchDocumentsClient";
-import { documentsServiceContext } from "@documents/context/documentsServiceContext";
+import { documentsServiceContext } from "@documents/application/context/documentsServiceContext";
+import DocumentsServiceFactory from "@documents/application/services/DocumentsServiceFactory";
 import {
   marketingPlanDocumentDtoFixture,
   q1ReportDocumentDtoFixture,
   userResearchDocumentDtoFixture,
 } from "@documents/fixtures/documentsFixtures";
-import { errorDocumentsHandlers } from "@documents/handlers/documentsHandlers";
-import DocumentsServiceFactory from "@documents/services/DocumentsServiceFactory";
+import FetchDocumentsClient from "@documents/infrastructure/client/FetchDocumentsClient";
+import { errorDocumentsHandlers } from "@documents/infrastructure/handlers/documentsHandlers";
 import { server } from "@shared/testing/mswServer";
 import { render } from "@shared/testing/testUtils";
 

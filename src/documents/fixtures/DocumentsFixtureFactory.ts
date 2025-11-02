@@ -1,5 +1,5 @@
-import type { DocumentDto } from "@documents/dto/types";
-import type { Document } from "@documents/types";
+import type { Document } from "@documents/domain/types";
+import type { DocumentDto } from "@documents/infrastructure/dto/types";
 import { getRelativeDateString } from "@shared/dates/helpers";
 
 class DocumentsFixtureFactory {

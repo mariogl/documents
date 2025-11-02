@@ -3,9 +3,9 @@ import { notificationsServiceContext } from "@notifications/context/notification
 import NotificationsService from "@notifications/services/NotificationsService";
 import NotificationsStore from "@notifications/store/NotificationsStore";
 
-import FetchDocumentsClient from "@documents/client/FetchDocumentsClient";
-import { documentsServiceContext } from "@documents/context/documentsServiceContext";
-import DocumentsServiceFactory from "@documents/services/DocumentsServiceFactory";
+import { documentsServiceContext } from "@documents/application/context/documentsServiceContext";
+import DocumentsServiceFactory from "@documents/application/services/DocumentsServiceFactory";
+import FetchDocumentsClient from "@documents/infrastructure/client/FetchDocumentsClient";
 import AppComponent from "@shared/components/App/App";
 
 import "@shared/styles/index.css";

@@ -1,7 +1,8 @@
 import { screen } from "@testing-library/dom";
 import userEvent from "@testing-library/user-event";
 
-import { render } from "../../testing/testUtils";
+import { render } from "@shared/testing/testUtils";
+
 import ListBoxComponent from "./ListBox";
 
 const user = userEvent.setup();
