@@ -1,4 +1,4 @@
-import NotificationsComponent from "@notifications/components/Notifications/Notifications";
+import NotificationsComponent from "@notifications/presentation/components/Notifications/Notifications";
 
 import { documentsServiceContext } from "@documents/application/context/documentsServiceContext";
 import DocumentsListComponent from "@documents/presentation/components/DocumentsList/DocumentsList";

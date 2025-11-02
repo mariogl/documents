@@ -1,4 +1,4 @@
-import type { Notification } from "@notifications/types";
+import type { Notification } from "@notifications/domain/types";
 
 export interface NotificationsClient {
   connect(): void;

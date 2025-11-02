@@ -1,6 +1,6 @@
-import type { NotificationsClient } from "@notifications/client/types";
-import type NotificationsStore from "@notifications/store/NotificationsStore";
-import type { Notification } from "@notifications/types";
+import type NotificationsStore from "@notifications/application/store/NotificationsStore";
+import type { Notification } from "@notifications/domain/types";
+import type { NotificationsClient } from "@notifications/infrastructure/client/types";
 
 class NotificationsService {
   constructor(

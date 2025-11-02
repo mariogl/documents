@@ -1,5 +1,5 @@
-import type { NotificationDto } from "@notifications/dto/types";
-import type { Notification } from "@notifications/types";
+import type { Notification } from "@notifications/domain/types";
+import type { NotificationDto } from "@notifications/infrastructure/dto/types";
 
 import type { NotificationsClient } from "./types";
 

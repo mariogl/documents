@@ -1,5 +1,5 @@
-import { notificationsServiceContext } from "@notifications/context/notificationsServiceContext";
-import type NotificationsService from "@notifications/services/NotificationsService";
+import { notificationsServiceContext } from "@notifications/application/context/notificationsServiceContext";
+import type NotificationsService from "@notifications/application/services/NotificationsService";
 import { screen } from "@testing-library/dom";
 
 import { documentsServiceContext } from "@documents/application/context/documentsServiceContext";

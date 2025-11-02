@@ -1,4 +1,4 @@
-import type NotificationsService from "@notifications/services/NotificationsService";
+import type NotificationsService from "@notifications/application/services/NotificationsService";
 
 import Context from "@shared/context/Context";
 

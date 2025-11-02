@@ -1,6 +1,6 @@
-import { notificationsServiceContext } from "@notifications/context/notificationsServiceContext";
-import type NotificationsService from "@notifications/services/NotificationsService";
-import type { Notification } from "@notifications/types";
+import { notificationsServiceContext } from "@notifications/application/context/notificationsServiceContext";
+import type NotificationsService from "@notifications/application/services/NotificationsService";
+import type { Notification } from "@notifications/domain/types";
 
 import Component from "@shared/components/Component";
 import IconComponent from "@shared/components/Icon/Icon";

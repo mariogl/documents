@@ -1,7 +1,7 @@
-import WebSocketNotificationsClient from "@notifications/client/WebSocketNotificationsClient";
-import { notificationsServiceContext } from "@notifications/context/notificationsServiceContext";
-import NotificationsService from "@notifications/services/NotificationsService";
-import NotificationsStore from "@notifications/store/NotificationsStore";
+import { notificationsServiceContext } from "@notifications/application/context/notificationsServiceContext";
+import NotificationsService from "@notifications/application/services/NotificationsService";
+import NotificationsStore from "@notifications/application/store/NotificationsStore";
+import WebSocketNotificationsClient from "@notifications/infrastructure/client/WebSocketNotificationsClient";
 
 import { documentsServiceContext } from "@documents/application/context/documentsServiceContext";
 import DocumentsServiceFactory from "@documents/application/services/DocumentsServiceFactory";
