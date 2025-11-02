@@ -42,7 +42,7 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
     this.form.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      this.validateFormData();
+      this.validateFormDataIStronglyWishThisValidationToBeAbstractedAndInjectedIntoThisFormClassPleaseForgiveThisPoorAndHumbleDeveloper();
 
       if (!this.isFormValid) {
         return;
@@ -58,7 +58,7 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
     return this.form;
   }
 
-  private validateFormData(): void {
+  private validateFormDataIStronglyWishThisValidationToBeAbstractedAndInjectedIntoThisFormClassPleaseForgiveThisPoorAndHumbleDeveloper(): void {
     if (!this.form) {
       return;
     }

@@ -1,6 +1,7 @@
 import type { Notification } from "@notifications/domain/types";
 import type { NotificationDto } from "@notifications/infrastructure/dto/types";
 
+import { PATHS } from "../../../shared/config/config";
 import type { NotificationsClient } from "./types";
 
 class WebSocketNotificationsClient implements NotificationsClient {
@@ -14,7 +15,7 @@ class WebSocketNotificationsClient implements NotificationsClient {
       return;
     }
 
-    this.ws = new WebSocket(this.url);
+    this.ws = new WebSocket(this.url + PATHS.NOTIFICATIONS);
 
     this.ws.addEventListener("message", (event) => {
       const notification: NotificationDto = JSON.parse(event.data);

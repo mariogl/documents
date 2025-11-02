@@ -11,7 +11,7 @@ import AppComponent from "@shared/presentation/components/App/App";
 import "@shared/presentation/styles/index.css";
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-const wsUrl = import.meta.env.VITE_WS_NOTIFICATIONS_URL;
+const wsUrl = import.meta.env.VITE_WS_NOTIFICATIONS_BASE_URL;
 
 documentsServiceContext.provide(
   DocumentsServiceFactory.create(new FetchDocumentsClient(apiBaseUrl)),

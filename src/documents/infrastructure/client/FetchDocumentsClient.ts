@@ -2,6 +2,7 @@ import type { Document, NewDocumentData } from "@documents/domain/types";
 import type { DocumentDto } from "@documents/infrastructure/dto/types";
 import { getRelativeDateString } from "@shared/dates/helpers";
 
+import { PATHS } from "../../../shared/config/config";
 import BaseDocumentsClient from "./BaseDocumentsClient";
 
 class FetchDocumentsClient extends BaseDocumentsClient {
@@ -11,7 +12,7 @@ class FetchDocumentsClient extends BaseDocumentsClient {
 
   async getDocuments(): Promise<Document[]> {
     try {
-      const response = await fetch(`${this.baseUrl}/documents`);
+      const response = await fetch(`${this.baseUrl}${PATHS.DOCUMENTS}`);
 
       if (!response.ok) {
         throw new Error();
