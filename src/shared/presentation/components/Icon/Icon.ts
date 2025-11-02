@@ -24,6 +24,7 @@ type IconName = keyof typeof icons;
 type IconComponentProps = {
   name: IconName;
   size?: number;
+  isDecorative?: boolean;
 };
 
 class IconComponent extends Component<ComponentProps<IconComponentProps>> {
@@ -32,6 +33,7 @@ class IconComponent extends Component<ComponentProps<IconComponentProps>> {
       name: props.name,
       size: props.size ?? 24,
       className: props.className,
+      isDecorative: props.isDecorative ?? false,
     });
   }
 
@@ -50,6 +52,10 @@ class IconComponent extends Component<ComponentProps<IconComponentProps>> {
 
     if (this.props.className) {
       svg.setAttribute("class", this.props.className);
+    }
+
+    if (this.props.isDecorative) {
+      svg.setAttribute("aria-hidden", "true");
     }
 
     return svg;

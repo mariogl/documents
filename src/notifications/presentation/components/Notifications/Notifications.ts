@@ -24,25 +24,35 @@ class NotificationsComponent extends Component {
   }
 
   protected render(): Element {
-    const container = document.createElement("div");
-    container.className = styles.notifications;
+    const container = this.createNotificationContainer();
 
-    const icon = new IconComponent({
-      name: "notifications",
-      className: styles.notifications__icon,
-    });
-
-    container.appendChild(icon.getElement());
-
-    const badge = document.createElement("span");
-    badge.className = styles.notifications__badge;
-    badge.textContent = this.notifications.length.toString();
-
-    container.appendChild(badge);
-
+    container.appendChild(this.createIcon());
+    container.appendChild(this.createBadge());
     container.append("New document added");
 
     return container;
+  }
+
+  private createNotificationContainer() {
+    const container = document.createElement("div");
+    container.role = "status";
+    container.className = styles.notifications;
+    return container;
+  }
+
+  private createIcon() {
+    return new IconComponent({
+      name: "notifications",
+      className: styles.notifications__icon,
+      isDecorative: true,
+    }).getElement();
+  }
+
+  private createBadge() {
+    const badge = document.createElement("span");
+    badge.className = styles.notifications__badge;
+    badge.textContent = this.notifications.length.toString();
+    return badge;
   }
 }
 
