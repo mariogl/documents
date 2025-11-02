@@ -1,13 +1,14 @@
-import FetchDocumentsClient from "./documents/client/FetchDocumentsClient";
-import { documentsServiceContext } from "./documents/context/documentsServiceContext";
-import DocumentsServiceFactory from "./documents/services/DocumentsServiceFactory";
-import WebSocketNotificationsClient from "./notifications/client/WebSocketNotificationsClient";
-import { notificationsServiceContext } from "./notifications/context/notificationsServiceContext";
-import NotificationsService from "./notifications/services/NotificationsService";
-import NotificationsStore from "./notifications/store/NotificationsStore";
-import AppComponent from "./shared/components/App/App";
+import WebSocketNotificationsClient from "@notifications/client/WebSocketNotificationsClient";
+import { notificationsServiceContext } from "@notifications/context/notificationsServiceContext";
+import NotificationsService from "@notifications/services/NotificationsService";
+import NotificationsStore from "@notifications/store/NotificationsStore";
 
-import "./shared/styles/index.css";
+import FetchDocumentsClient from "@documents/client/FetchDocumentsClient";
+import { documentsServiceContext } from "@documents/context/documentsServiceContext";
+import DocumentsServiceFactory from "@documents/services/DocumentsServiceFactory";
+import AppComponent from "@shared/components/App/App";
+
+import "@shared/styles/index.css";
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 const wsUrl = import.meta.env.VITE_WS_NOTIFICATIONS_URL;

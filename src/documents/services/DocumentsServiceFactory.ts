@@ -1,5 +1,6 @@
-import type { DocumentsClient } from "../client/types";
-import DocumentsStore from "../store/DocumentsStore";
+import type { DocumentsClient } from "@documents/client/types";
+import DocumentsStore from "@documents/store/DocumentsStore";
+
 import DocumentsService from "./DocumentsService";
 
 class DocumentsServiceFactory {

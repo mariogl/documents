@@ -1,7 +1,7 @@
 import { http, HttpResponse } from "msw";
 
-import type { DocumentDto } from "../dto/types";
-import { documentsDtoFixture } from "../fixtures/documentsFixtures";
+import type { DocumentDto } from "@documents/dto/types";
+import { documentsDtoFixture } from "@documents/fixtures/documentsFixtures";
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 

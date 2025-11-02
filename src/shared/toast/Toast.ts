@@ -1,6 +1,6 @@
-import Component from "../components/Component";
-import IconComponent from "../components/Icon/Icon";
-import IconButtonComponent from "../components/IconButton/IconButton";
+import Component from "@shared/components/Component";
+import IconComponent from "@shared/components/Icon/Icon";
+import IconButtonComponent from "@shared/components/IconButton/IconButton";
 
 import styles from "./Toast.module.css";
 

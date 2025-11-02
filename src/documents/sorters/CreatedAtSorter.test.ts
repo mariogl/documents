@@ -1,4 +1,5 @@
-import type { Document } from "../types";
+import type { Document } from "@documents/types";
+
 import CreatedAtSorter from "./CreatedAtSorter";
 
 describe("CreatedAtSorter", () => {

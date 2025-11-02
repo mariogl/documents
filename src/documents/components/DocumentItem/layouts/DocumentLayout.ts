@@ -1,4 +1,5 @@
-import HeadingComponent from "../../../../shared/components/Heading/Heading";
+import HeadingComponent from "@shared/components/Heading/Heading";
+
 import type { DocumentItemSlots } from "../types";
 
 import cardLayoutStyles from "./DocumentCard.module.css";

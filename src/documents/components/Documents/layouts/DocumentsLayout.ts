@@ -1,4 +1,5 @@
-import type { Document } from "../../../types";
+import type { Document } from "@documents/types";
+
 import DocumentItemComponent from "../../DocumentItem/DocumentItem";
 
 import gridLayoutStyles from "./DocumentsGridLayout.module.css";

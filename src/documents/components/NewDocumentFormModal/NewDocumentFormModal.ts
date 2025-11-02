@@ -1,12 +1,13 @@
-import Component from "../../../shared/components/Component";
-import HeadingComponent from "../../../shared/components/Heading/Heading";
-import IconComponent from "../../../shared/components/Icon/Icon";
-import IconButtonComponent from "../../../shared/components/IconButton/IconButton";
-import type { ComponentProps } from "../../../shared/components/types";
-import { toast } from "../../../shared/toast/ToastService";
-import { documentsServiceContext } from "../../context/documentsServiceContext";
-import type DocumentsService from "../../services/DocumentsService";
-import type { NewDocumentData } from "../../types";
+import { documentsServiceContext } from "@documents/context/documentsServiceContext";
+import type DocumentsService from "@documents/services/DocumentsService";
+import type { NewDocumentData } from "@documents/types";
+import Component from "@shared/components/Component";
+import HeadingComponent from "@shared/components/Heading/Heading";
+import IconComponent from "@shared/components/Icon/Icon";
+import IconButtonComponent from "@shared/components/IconButton/IconButton";
+import type { ComponentProps } from "@shared/components/types";
+import { toast } from "@shared/toast/ToastService";
+
 import NewDocumentFormComponent from "../NewDocumentForm/NewDocumentForm";
 
 import styles from "./NewDocumentFormModal.module.css";

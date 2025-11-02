@@ -1,6 +1,6 @@
-import { getRelativeDateString } from "../../shared/dates/helpers";
-import type { DocumentDto } from "../dto/types";
-import type { Document } from "../types";
+import type { DocumentDto } from "@documents/dto/types";
+import type { Document } from "@documents/types";
+import { getRelativeDateString } from "@shared/dates/helpers";
 
 class DocumentsFixtureFactory {
   static createDocumentFixture(overrides: Partial<Document> = {}): Document {

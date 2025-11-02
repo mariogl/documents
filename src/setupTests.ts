@@ -1,4 +1,4 @@
-import { server } from "./shared/testing/mswServer";
+import { server } from "@shared/testing/mswServer";
 
 import "@testing-library/jest-dom/vitest";
 

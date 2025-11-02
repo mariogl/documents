@@ -1,9 +1,9 @@
-import { uiStore } from "../../shared/store/UiStore";
-import { toast } from "../../shared/toast/ToastService";
-import type { DocumentsClient } from "../client/types";
-import type { DocumentSortableProperties } from "../components/DocumentsSorting/DocumentsSorting";
-import type DocumentsStore from "../store/DocumentsStore";
-import type { Document, NewDocumentData } from "../types";
+import type { DocumentsClient } from "@documents/client/types";
+import type { DocumentSortableProperties } from "@documents/components/DocumentsSorting/DocumentsSorting";
+import type DocumentsStore from "@documents/store/DocumentsStore";
+import type { Document, NewDocumentData } from "@documents/types";
+import { uiStore } from "@shared/store/UiStore";
+import { toast } from "@shared/toast/ToastService";
 
 class DocumentsService {
   constructor(

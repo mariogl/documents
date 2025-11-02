@@ -1,11 +1,12 @@
 import { screen } from "@testing-library/dom";
 
-import { render } from "../../../shared/testing/testUtils";
 import {
   coverLetterDocumentFixture,
   cvDocumentFixture,
-} from "../../fixtures/documentsFixtures";
-import type { Document } from "../../types";
+} from "@documents/fixtures/documentsFixtures";
+import type { Document } from "@documents/types";
+import { render } from "@shared/testing/testUtils";
+
 import DocumentsComponent from "./Documents";
 
 describe("Documents Component", () => {

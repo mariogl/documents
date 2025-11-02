@@ -1,4 +1,5 @@
-import type { Document } from "../types";
+import type { Document } from "@documents/types";
+
 import DocumentsFixtureFactory from "./DocumentsFixtureFactory";
 
 export const q1ReportDocumentDtoFixture =

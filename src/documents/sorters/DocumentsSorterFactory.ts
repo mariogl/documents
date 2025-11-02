@@ -1,4 +1,5 @@
-import type { DocumentSortableProperties } from "../components/DocumentsSorting/DocumentsSorting";
+import type { DocumentSortableProperties } from "@documents/components/DocumentsSorting/DocumentsSorting";
+
 import CreatedAtSorter from "./CreatedAtSorter";
 import NameSorter from "./NameSorter";
 import type { DocumentsSorter } from "./types";

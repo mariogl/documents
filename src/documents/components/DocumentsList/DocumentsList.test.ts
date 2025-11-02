@@ -1,15 +1,16 @@
 import { screen } from "@testing-library/dom";
 import userEvent from "@testing-library/user-event";
 
-import { render } from "../../../shared/testing/testUtils";
-import FetchDocumentsClient from "../../client/FetchDocumentsClient";
-import { documentsServiceContext } from "../../context/documentsServiceContext";
+import FetchDocumentsClient from "@documents/client/FetchDocumentsClient";
+import { documentsServiceContext } from "@documents/context/documentsServiceContext";
 import {
   coverLetterDocumentFixture,
   cvDocumentFixture,
-} from "../../fixtures/documentsFixtures";
-import DocumentsServiceFactory from "../../services/DocumentsServiceFactory";
-import DocumentsStore from "../../store/DocumentsStore";
+} from "@documents/fixtures/documentsFixtures";
+import DocumentsServiceFactory from "@documents/services/DocumentsServiceFactory";
+import DocumentsStore from "@documents/store/DocumentsStore";
+import { render } from "@shared/testing/testUtils";
+
 import DocumentsListComponent from "./DocumentsList";
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;

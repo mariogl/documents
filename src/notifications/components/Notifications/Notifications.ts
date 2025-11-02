@@ -1,7 +1,9 @@
-import Component from "../../../shared/components/Component";
-import IconComponent from "../../../shared/components/Icon/Icon";
-import type { ComponentProps } from "../../../shared/components/types";
-import { notificationsServiceContext } from "../../context/notificationsServiceContext";
+import { notificationsServiceContext } from "@notifications/context/notificationsServiceContext";
+
+import Component from "@shared/components/Component";
+import IconComponent from "@shared/components/Icon/Icon";
+import type { ComponentProps } from "@shared/components/types";
+
 import type NotificationsService from "../../services/NotificationsService";
 import type { Notification } from "../../types";
 

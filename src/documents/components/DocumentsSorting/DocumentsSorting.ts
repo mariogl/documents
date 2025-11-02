@@ -1,8 +1,8 @@
-import Component from "../../../shared/components/Component";
-import DropdownComponent from "../../../shared/components/Dropdown/Dropdown";
-import { documentsServiceContext } from "../../context/documentsServiceContext";
-import type DocumentsService from "../../services/DocumentsService";
-import type { Document } from "../../types";
+import { documentsServiceContext } from "@documents/context/documentsServiceContext";
+import type DocumentsService from "@documents/services/DocumentsService";
+import type { Document } from "@documents/types";
+import Component from "@shared/components/Component";
+import DropdownComponent from "@shared/components/Dropdown/Dropdown";
 
 import styles from "./DocumentsSorting.module.css";
 

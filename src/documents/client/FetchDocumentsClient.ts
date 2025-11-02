@@ -1,6 +1,7 @@
-import { getRelativeDateString } from "../../shared/dates/helpers";
-import type { DocumentDto } from "../dto/types";
-import type { Document, NewDocumentData } from "../types";
+import type { DocumentDto } from "@documents/dto/types";
+import type { Document, NewDocumentData } from "@documents/types";
+import { getRelativeDateString } from "@shared/dates/helpers";
+
 import BaseDocumentsClient from "./BaseDocumentsClient";
 
 class FetchDocumentsClient extends BaseDocumentsClient {

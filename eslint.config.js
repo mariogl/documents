@@ -1,6 +1,5 @@
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import tseslint from "typescript-eslint";
-
 import js from "@eslint/js";
 
 export default [
@@ -18,10 +17,10 @@ export default [
         "error",
         {
           groups: [
-            // External packages
-            ["^\\w"],
-            // Internal packages (starting with ~, @, or relative paths)
-            ["^~", "^@"],
+            // External packages (third-party)
+            ["^(?!@documents|@shared)\\w", "^@"],
+            // Path aliases
+            ["^@documents", "^@shared"],
             // Relative imports
             ["^\\."],
             // CSS imports (should come last)

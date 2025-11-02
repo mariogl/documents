@@ -1,8 +1,9 @@
 import { screen } from "@testing-library/dom";
 
-import { render } from "../../../shared/testing/testUtils";
-import DocumentsFixtureFactory from "../../fixtures/DocumentsFixtureFactory";
-import type { Document } from "../../types";
+import DocumentsFixtureFactory from "@documents/fixtures/DocumentsFixtureFactory";
+import type { Document } from "@documents/types";
+import { render } from "@shared/testing/testUtils";
+
 import DocumentItemComponent from "./DocumentItem";
 
 describe("DocumentItem Component", () => {

@@ -1,11 +1,12 @@
-import ButtonComponent from "../../../shared/components/Button/Button";
-import Component from "../../../shared/components/Component";
-import type { ComponentProps } from "../../../shared/components/types";
-import { MOBILE_BREAKPOINT } from "../../../shared/config/config";
-import subscribeToMediaQuery from "../../../shared/mediaQuery/mediaQuery";
-import { documentsServiceContext } from "../../context/documentsServiceContext";
-import type DocumentsService from "../../services/DocumentsService";
-import type { Document } from "../../types";
+import { documentsServiceContext } from "@documents/context/documentsServiceContext";
+import type DocumentsService from "@documents/services/DocumentsService";
+import type { Document } from "@documents/types";
+import ButtonComponent from "@shared/components/Button/Button";
+import Component from "@shared/components/Component";
+import type { ComponentProps } from "@shared/components/types";
+import { MOBILE_BREAKPOINT } from "@shared/config/config";
+import subscribeToMediaQuery from "@shared/mediaQuery/mediaQuery";
+
 import type { LayoutType } from "../DocumentItem/types";
 import DocumentsComponent from "../Documents/Documents";
 import DocumentsLayoutModeComponent from "../DocumentsLayoutMode/DocumentsLayoutMode";

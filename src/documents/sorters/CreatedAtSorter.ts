@@ -1,5 +1,5 @@
-import type { DocumentsSorter } from "../sorters/types";
-import type { Document } from "../types";
+import type { DocumentsSorter } from "@documents/sorters/types";
+import type { Document } from "@documents/types";
 
 class CreatedAtSorter implements DocumentsSorter {
   sort(documentA: Document, documentB: Document): number {

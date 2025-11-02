@@ -3,7 +3,8 @@ import userEvent from "@testing-library/user-event";
 
 const user = userEvent.setup();
 
-import { render } from "../../../shared/testing/testUtils";
+import { render } from "@shared/testing/testUtils";
+
 import NewDocumentFormComponent from "./NewDocumentForm";
 
 describe("NewDocumentForm Component", () => {

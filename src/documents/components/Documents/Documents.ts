@@ -1,5 +1,6 @@
-import Component from "../../../shared/components/Component";
-import type { Document } from "../../types";
+import type { Document } from "@documents/types";
+import Component from "@shared/components/Component";
+
 import type { LayoutType } from "../DocumentItem/types";
 import DocumentsLayout from "./layouts/DocumentsLayout";
 

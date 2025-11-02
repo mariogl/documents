@@ -1,6 +1,7 @@
-import { server } from "../../shared/testing/mswServer";
-import { documentsDtoFixture } from "../fixtures/documentsFixtures";
-import { errorDocumentsHandlers } from "../handlers/documentsHandlers";
+import { documentsDtoFixture } from "@documents/fixtures/documentsFixtures";
+import { errorDocumentsHandlers } from "@documents/handlers/documentsHandlers";
+import { server } from "@shared/testing/mswServer";
+
 import FetchDocumentsClient from "./FetchDocumentsClient";
 
 describe("FetchDocumentsClient", () => {

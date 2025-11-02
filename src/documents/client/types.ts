@@ -1,4 +1,4 @@
-import type { Document, NewDocumentData } from "../types";
+import type { Document, NewDocumentData } from "@documents/types";
 
 export interface DocumentsClient {
   getDocuments(): Promise<Document[]>;

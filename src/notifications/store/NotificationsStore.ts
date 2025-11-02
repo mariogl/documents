@@ -1,5 +1,6 @@
-import Store from "../../shared/store/Store";
-import type { Notification } from "../types";
+import type { Notification } from "@notifications/types";
+
+import Store from "@shared/store/Store";
 
 class NotificationsStore extends Store {
   private notifications: Notification[] = [];

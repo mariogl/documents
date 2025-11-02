@@ -1,4 +1,5 @@
-import Context from "../../shared/context/Context";
-import type NotificationsService from "../services/NotificationsService";
+import type NotificationsService from "@notifications/services/NotificationsService";
+
+import Context from "@shared/context/Context";
 
 export const notificationsServiceContext = new Context<NotificationsService>();

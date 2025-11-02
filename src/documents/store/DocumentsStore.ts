@@ -1,7 +1,7 @@
-import Store from "../../shared/store/Store";
-import type { DocumentSortableProperties } from "../components/DocumentsSorting/DocumentsSorting";
-import DocumentsSorterFactory from "../sorters/DocumentsSorterFactory";
-import type { Document } from "../types";
+import type { DocumentSortableProperties } from "@documents/components/DocumentsSorting/DocumentsSorting";
+import DocumentsSorterFactory from "@documents/sorters/DocumentsSorterFactory";
+import type { Document } from "@documents/types";
+import Store from "@shared/store/Store";
 
 class DocumentsStore extends Store {
   private documents: Document[] = [];

@@ -1,4 +1,5 @@
-import Context from "../context/Context";
+import Context from "@shared/context/Context";
+
 import Store from "./Store";
 
 export const uiContext = new Context<{

@@ -1,5 +1,6 @@
-import type { NotificationDto } from "../dto/types";
-import type { Notification } from "../types";
+import type { NotificationDto } from "@notifications/dto/types";
+import type { Notification } from "@notifications/types";
+
 import type { NotificationsClient } from "./types";
 
 class WebSocketNotificationsClient implements NotificationsClient {

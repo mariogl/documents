@@ -1,18 +1,19 @@
+import { notificationsServiceContext } from "@notifications/context/notificationsServiceContext";
+import type NotificationsService from "@notifications/services/NotificationsService";
 import { screen } from "@testing-library/dom";
 
-import FetchDocumentsClient from "../../../documents/client/FetchDocumentsClient";
-import { documentsServiceContext } from "../../../documents/context/documentsServiceContext";
+import FetchDocumentsClient from "@documents/client/FetchDocumentsClient";
+import { documentsServiceContext } from "@documents/context/documentsServiceContext";
 import {
   marketingPlanDocumentDtoFixture,
   q1ReportDocumentDtoFixture,
   userResearchDocumentDtoFixture,
-} from "../../../documents/fixtures/documentsFixtures";
-import { errorDocumentsHandlers } from "../../../documents/handlers/documentsHandlers";
-import DocumentsServiceFactory from "../../../documents/services/DocumentsServiceFactory";
-import { notificationsServiceContext } from "../../../notifications/context/notificationsServiceContext";
-import type NotificationsService from "../../../notifications/services/NotificationsService";
-import { server } from "../../testing/mswServer";
-import { render } from "../../testing/testUtils";
+} from "@documents/fixtures/documentsFixtures";
+import { errorDocumentsHandlers } from "@documents/handlers/documentsHandlers";
+import DocumentsServiceFactory from "@documents/services/DocumentsServiceFactory";
+import { server } from "@shared/testing/mswServer";
+import { render } from "@shared/testing/testUtils";
+
 import AppComponent from "./App";
 
 describe("App Component", () => {
