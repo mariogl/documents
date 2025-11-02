@@ -1,12 +1,4 @@
-import Context from "@shared/application/context/Context";
-
-import Store from "./Store";
-
-export const uiContext = new Context<{
-  isLoading: boolean;
-  startLoading: () => void;
-  stopLoading: () => void;
-}>();
+import Store from "../../application/store/Store";
 
 class UiStore extends Store {
   private isLoading = false;

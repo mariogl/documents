@@ -1,4 +1,4 @@
-import { uiStore } from "@shared/application/store/UiStore";
+import { uiStore } from "@/shared/presentation/store/UiStore";
 
 import Component from "../Component";
 import type { ComponentProps } from "../types";
