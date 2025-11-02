@@ -1,7 +1,6 @@
-import { http, HttpResponse } from "msw";
-
 import { server } from "../../shared/testing/mswServer";
 import { documentsDtoFixture } from "../fixtures/documentsFixtures";
+import { errorDocumentsHandlers } from "../handlers/documentsHandlers";
 import FetchDocumentsClient from "./FetchDocumentsClient";
 
 describe("FetchDocumentsClient", () => {
@@ -32,11 +31,7 @@ describe("FetchDocumentsClient", () => {
     const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
     const client = new FetchDocumentsClient(apiBaseUrl);
 
-    server.use(
-      http.get(`${apiBaseUrl}/documents`, () =>
-        HttpResponse.json({}, { status: 500 }),
-      ),
-    );
+    server.use(...errorDocumentsHandlers);
 
     await expect(client.getDocuments()).rejects.toThrow(
       "Failed to fetch documents",

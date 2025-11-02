@@ -10,3 +10,9 @@ export const documentsHandlers = [
     return HttpResponse.json<DocumentDto[]>(documentsDtoFixture);
   }),
 ];
+
+export const errorDocumentsHandlers = [
+  http.get(`${apiBaseUrl}/documents`, () =>
+    HttpResponse.json({}, { status: 500 }),
+  ),
+];

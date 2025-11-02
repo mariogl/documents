@@ -18,14 +18,12 @@ class DocumentsService {
       uiStore.stopLoading();
 
       this.documentsStore.setDocuments(documents);
-    } catch (error) {
+    } catch {
       toast.show({
         type: "error",
         message: "Failed to load documents. Please try again later.",
       });
       uiStore.stopLoading();
-
-      throw error;
     }
   }
 

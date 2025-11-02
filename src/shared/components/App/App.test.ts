@@ -7,26 +7,28 @@ import {
   q1ReportDocumentDtoFixture,
   userResearchDocumentDtoFixture,
 } from "../../../documents/fixtures/documentsFixtures";
+import { errorDocumentsHandlers } from "../../../documents/handlers/documentsHandlers";
 import DocumentsServiceFactory from "../../../documents/services/DocumentsServiceFactory";
 import { notificationsServiceContext } from "../../../notifications/context/notificationsServiceContext";
 import type NotificationsService from "../../../notifications/services/NotificationsService";
+import { server } from "../../testing/mswServer";
 import { render } from "../../testing/testUtils";
 import AppComponent from "./App";
 
 describe("App Component", () => {
+  const dummyNotificationsService = {
+    subscribe: () => {},
+  } as Pick<NotificationsService, "subscribe">;
+
+  notificationsServiceContext.provide(
+    dummyNotificationsService as NotificationsService,
+  );
+
   it("should render the documents list", async () => {
     const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
     documentsServiceContext.provide(
       DocumentsServiceFactory.create(new FetchDocumentsClient(apiBaseUrl)),
-    );
-
-    const dummyNotificationsService = {
-      subscribe: () => {},
-    } as Pick<NotificationsService, "subscribe">;
-
-    notificationsServiceContext.provide(
-      dummyNotificationsService as NotificationsService,
     );
 
     const app = new AppComponent({});
@@ -45,5 +47,22 @@ describe("App Component", () => {
     expect(q1ReportDocumentName).toBeInTheDocument();
     expect(userResearchDocumentName).toBeInTheDocument();
     expect(marketingPlanDocumentName).toBeInTheDocument();
+  });
+
+  it("should show an error message when documents fail to load", async () => {
+    server.use(...errorDocumentsHandlers);
+
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
+    documentsServiceContext.provide(
+      DocumentsServiceFactory.create(new FetchDocumentsClient(apiBaseUrl)),
+    );
+
+    const app = new AppComponent({});
+    render(app);
+
+    const errorMessage = await screen.findByText(/failed to load documents/i);
+
+    expect(errorMessage).toBeInTheDocument();
   });
 });
