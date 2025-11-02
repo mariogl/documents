@@ -13,9 +13,9 @@ describe("NewDocumentForm Component", () => {
     render(newDocumentForm);
 
     const nameInput = screen.getByLabelText(/^name/i);
-    const versionInput = screen.getByLabelText(/version/i);
-    const contributorsInput = screen.getByLabelText(/contributors/i);
-    const attachmentsInput = screen.getByLabelText(/attachments/i);
+    const versionInput = screen.getByLabelText(/^version/i);
+    const contributorsInput = screen.getByLabelText(/^contributors/i);
+    const attachmentsInput = screen.getByLabelText(/^attachments/i);
     const submitButton = screen.getByRole("button", {
       name: /create document/i,
     });
