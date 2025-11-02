@@ -1,0 +1,4 @@
+echo "⬆️ Running pre-commit hooks..."
+
+npm test
+npm run test:e2e

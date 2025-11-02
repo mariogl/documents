@@ -8,7 +8,7 @@ import DocumentsServiceFactory from "@documents/application/services/DocumentsSe
 import FetchDocumentsClient from "@documents/infrastructure/client/FetchDocumentsClient";
 import AppComponent from "@shared/presentation/components/App/App";
 
-import "@shared/styles/index.css";
+import "@shared/presentation/styles/index.css";
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 const wsUrl = import.meta.env.VITE_WS_NOTIFICATIONS_URL;
