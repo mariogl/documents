@@ -25,7 +25,7 @@ class LoadingComponent extends Component {
 
     const loader = document.createElement("div");
     loader.className = styles.loader;
-    loader.role = "alert";
+    loader.setAttribute("aria-busy", "true");
     loader.setAttribute("aria-label", "Loading");
 
     container.appendChild(loader);

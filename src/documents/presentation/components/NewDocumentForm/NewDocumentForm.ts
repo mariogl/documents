@@ -93,6 +93,7 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
   private showFieldError(field: HTMLElement, message: string) {
     field.classList.add("invalid");
     field.setAttribute("aria-invalid", "true");
+    field.setAttribute("aria-describedby", `${field.id}-error`);
 
     const errorId = `${field.id}-error`;
     const errorElement = document.getElementById(errorId);
@@ -104,6 +105,7 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
   private clearFieldError(field: HTMLElement) {
     field.classList.remove("invalid");
     field.removeAttribute("aria-invalid");
+    field.removeAttribute("aria-describedby");
 
     const errorId = `${field.id}-error`;
     const errorElement = document.getElementById(errorId);
