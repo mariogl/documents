@@ -85,6 +85,13 @@ class NewDocumentFormComponent extends Component<NewDocumentFormProps> {
       this.isFormValid = false;
 
       this.showFieldError(versionField, "Please provide the document version.");
+    } else if (!/^\d+\.\d+\.\d+$/.test(version.trim())) {
+      this.isFormValid = false;
+
+      this.showFieldError(
+        versionField,
+        "Version must follow the pattern X.Y.Z (e.g., 1.0.0).",
+      );
     } else {
       this.clearFieldError(versionField);
     }
