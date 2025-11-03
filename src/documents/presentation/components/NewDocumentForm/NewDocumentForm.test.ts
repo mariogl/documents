@@ -73,4 +73,25 @@ describe("NewDocumentForm Component", () => {
 
     expect(mockOnSubmit).not.toHaveBeenCalled();
   });
+
+  it("should show validation errors when form is invalid", async () => {
+    const newDocumentForm = new NewDocumentFormComponent({});
+
+    render(newDocumentForm);
+
+    const submitButton = screen.getByRole("button", {
+      name: /create document/i,
+    });
+    await user.click(submitButton);
+
+    const nameError = await screen.findByText(
+      /please provide the document name/i,
+    );
+    const versionError = await screen.findByText(
+      /please provide the document version/i,
+    );
+
+    expect(nameError).toBeInTheDocument();
+    expect(versionError).toBeInTheDocument();
+  });
 });
