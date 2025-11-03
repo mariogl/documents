@@ -47,15 +47,17 @@ Environment variables:
 
 ## Architecture
 
-Layered architecture per bounded context:
+The folder structure has been chosen with the "screaming architecture" principle in mind: the top-level folders reflect the application's business concepts, not implementation details.
 
-- Domain: types
-- Application: services, stores, factory, DI context, sorters
-- Infrastructure: clients, DTO mapping, test handlers
-- Presentation: components, media-query helper, CSS modules
+Within each module, a layered architecture is followed to separate concerns:
+
+- Domain: Types and Business models
+- Application: Services, stores, factories, DI contexts, sorters
+- Infrastructure: API and WS clients, DTO mapping, test handlers
+- Presentation: UI components, media query helper, CSS modules
 - Shared: base `Component`, `Store`, `Context`, config, date helpers, testing utilities
 
-The entry point wires environment, constructs services, provides contexts, connects notifications, and mounts `App`.
+The entry point wires environment, constructs services, provides contexts, connects notifications, and mounts the `App` component.
 
 ## Design patterns and decisions
 

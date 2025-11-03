@@ -5,6 +5,10 @@ This repository contains two main applications:
 - **webapp/**: The frontend application, built with Vite and TypeScript. ➡️ [README.md](./webapp/README.md)
 - **server/**: A Go-based REST API server. ➡️ [README.md](./server/README.md)
 
+## Product specs
+
+A document with the User Stories and Acceptance Criteria can be found [here](./USER-STORIES.md).
+
 ## Getting Started
 
 ### Prerequisites
