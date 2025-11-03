@@ -10,8 +10,6 @@ type DocumentsComponentProps = {
 };
 
 class DocumentsComponent extends Component<DocumentsComponentProps> {
-  private currentLayoutType: LayoutType = this.props.layoutType;
-
   protected render(): Element {
     const layout = new DocumentsLayout(this.props.documents);
 
@@ -20,7 +18,7 @@ class DocumentsComponent extends Component<DocumentsComponentProps> {
       grid: layout.generateGridLayout.bind(layout),
     };
 
-    return layouts[this.currentLayoutType]();
+    return layouts[this.props.layoutType]();
   }
 }
 
