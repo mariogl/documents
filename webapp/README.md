@@ -8,6 +8,7 @@ A small front-end application built with TypeScript and a lightweight component 
 - [Tech stack](#tech-stack)
 - [Features](#features)
 - [Architecture](#architecture)
+- [Components](#components)
 - [Design patterns and decisions](#design-patterns-and-decisions)
 - [Notable trade-offs and intentional overabstractions](#notable-trade-offs-and-intentional-overabstractions)
 - [Testing](#testing)
@@ -20,7 +21,7 @@ A small front-end application built with TypeScript and a lightweight component 
 
 1. Install: `npm install`
 2. Development: `npm run dev`
-3. Tests: `npm test`
+3. Tests: `npm test` (for unit/integration) or `npm run e2e` (for E2E)
 
 Environment variables:
 
@@ -55,9 +56,12 @@ Within each module, a layered architecture is followed to separate concerns:
 - Application: Services, stores, factories, DI contexts, sorters
 - Infrastructure: API and WS clients, DTO mapping, test handlers
 - Presentation: UI components, media query helper, CSS modules
-- Shared: base `Component`, `Store`, `Context`, config, date helpers, testing utilities
 
 The entry point wires environment, constructs services, provides contexts, connects notifications, and mounts the `App` component.
+
+## Components
+
+The components have been built following the principles of composition and reuse, aiming to keep them as decoupled as possible from business logic.
 
 ## Design patterns and decisions
 
@@ -95,6 +99,8 @@ Known simplifications deliberately not applied:
 - Decorative icons marked `aria-hidden`
 - Focus management for toasts and layout toggles
 - Semantic HTML
+- rem units for scalable text
+- reduced motion media query respected in animations
 
 ## CI
 
