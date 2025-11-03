@@ -41,12 +41,19 @@ class NewDocumentFormModalComponent extends Component {
   }
 
   private async onSubmit(data: NewDocumentData, dialog: HTMLDialogElement) {
-    dialog.close();
-    await this.documentsService.addDocument(data);
-    toast.show({
-      type: "success",
-      message: "Document added successfully",
-    });
+    try {
+      await this.documentsService.addDocument(data);
+      dialog.close();
+      toast.show({
+        type: "success",
+        message: "Document added successfully",
+      });
+    } catch {
+      toast.show({
+        type: "error",
+        message: "Failed to add document. Please try again.",
+      });
+    }
   }
 
   private createContainer() {
