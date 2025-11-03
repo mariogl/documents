@@ -1,19 +1,20 @@
-# Documents App
+# Documents App webapp
 
 A small front-end application built with TypeScript and a lightweight component system over the DOM. It lists documents, allows sorting and layout switching, adds new documents via a form, and displays real-time notifications.
 
 ## Contents
 
-- Getting started
-- Tech stack
-- Features
-- Architecture
-- Design patterns and decisions
-- Notable trade-offs and intentional overabstractions
-- Testing
-- Accessibility
-- Future refactors
-- Conventions
+- [Getting started](#getting-started)
+- [Tech stack](#tech-stack)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Design patterns and decisions](#design-patterns-and-decisions)
+- [Notable trade-offs and intentional overabstractions](#notable-trade-offs-and-intentional-overabstractions)
+- [Testing](#testing)
+- [Accessibility](#accessibility)
+- [CI](#ci)
+- [Future refactors](#future-refactors)
+- [Conventions](#conventions)
 
 ## Getting started
 
